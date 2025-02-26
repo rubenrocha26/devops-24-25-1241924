@@ -14,4 +14,13 @@ class EmployeeTest {
         assertNotNull(employee);
     }
 
+    @Test
+    void shouldCreateEmployeeWithAllArgs(){
+        //arrange
+        //act
+        Employee employee = new Employee("Ruben", "Rocha", "Student", 5);
+        //assert
+        assertNotNull(employee);
+    }
+
 }

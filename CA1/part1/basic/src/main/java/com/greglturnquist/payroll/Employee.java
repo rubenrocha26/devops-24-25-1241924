@@ -32,15 +32,17 @@ public class Employee {
 	private String firstName;
 	private String lastName;
 	private String description;
+	private int jobYears;
 
 	//Empty Constructor
 	public Employee() {}
 
 	//Constructor
-	public Employee(String firstName, String lastName, String description) {
+	public Employee(String firstName, String lastName, String description, int jobYears) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.description = description;
+		this.jobYears = jobYears;
 	}
 
 	@Override
@@ -51,13 +53,14 @@ public class Employee {
 		return Objects.equals(id, employee.id) &&
 			Objects.equals(firstName, employee.firstName) &&
 			Objects.equals(lastName, employee.lastName) &&
-			Objects.equals(description, employee.description);
+			Objects.equals(description, employee.description) &&
+			Objects.equals(jobYears, employee.jobYears);
 	}
 
 	@Override
 	public int hashCode() {
 
-		return Objects.hash(id, firstName, lastName, description);
+		return Objects.hash(id, firstName, lastName, description, jobYears);
 	}
 
 	public Long getId() {
