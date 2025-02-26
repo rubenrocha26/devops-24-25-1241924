@@ -33,8 +33,10 @@ public class Employee {
 	private String lastName;
 	private String description;
 
-	private Employee() {}
+	//Empty Constructor
+	public Employee() {}
 
+	//Constructor
 	public Employee(String firstName, String lastName, String description) {
 		this.firstName = firstName;
 		this.lastName = lastName;
