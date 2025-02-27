@@ -120,6 +120,7 @@ public class Employee {
 			", firstName='" + firstName + '\'' +
 			", lastName='" + lastName + '\'' +
 			", description='" + description + '\'' +
+			", jobYears='" + jobYears + '\'' +
 			'}';
 	}
 

@@ -313,4 +313,17 @@ class EmployeeTest {
         //assert
         assertEquals(4, result);
     }
+
+    @Test
+    void shouldReturnEmployeeToString(){
+        //arrange
+        Employee employee1 = new Employee("Ruben", "Rocha", "Student", 5);
+        employee1.setId(1L);
+        //act
+        String result = employee1.toString();
+        // assert
+        String expected = "Employee{id=1, firstName='Ruben', lastName='Rocha', description='Student', jobYears='5'}";
+        assertEquals(expected, result);
+
+    }
 }
