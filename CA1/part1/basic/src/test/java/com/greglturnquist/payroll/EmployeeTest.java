@@ -241,6 +241,17 @@ class EmployeeTest {
     }
 
     @Test
+    void shouldSetEmployeeFirstName(){
+        //arrange
+        Employee employee1 = new Employee("Ruben", "Rocha", "Student", 5);
+        //act
+        employee1.setFirstName("Alexandre");
+        String result = employee1.getFirstName();
+        //assert
+        assertEquals("Alexandre", result);
+    }
+
+    @Test
     void shouldReturnEmployeeLastName(){
         //arrange
         Employee employee1 = new Employee("Ruben", "Rocha", "Student", 5);
