@@ -22,7 +22,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 /**
- * @author Greg Turnquist
+ * @author Ruben Rocha
  */
 // tag::code[]
 @Entity // <1>
