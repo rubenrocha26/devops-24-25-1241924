@@ -239,4 +239,25 @@ class EmployeeTest {
         //assert
         assertEquals(firstName, "Ruben");
     }
+
+    @Test
+    void shouldReturnEmployeeLastName(){
+        //arrange
+        Employee employee1 = new Employee("Ruben", "Rocha", "Student", 5);
+        //act
+        String lastName = employee1.getLastName();
+        //assert
+        assertEquals(lastName, "Rocha");
+    }
+
+    @Test
+    void shouldSetEmployeeLastName(){
+        //arrange
+        Employee employee1 = new Employee("Ruben", "Rocha", "Student", 5);
+        //act
+        employee1.setLastName("Costa");
+        String result = employee1.getLastName();
+        //assert
+        assertEquals("Costa",result);
+    }
 }
