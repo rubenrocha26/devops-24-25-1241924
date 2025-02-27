@@ -73,4 +73,18 @@ class EmployeeTest {
 
     }
 
+    @Test
+    void emptyJobYearsShouldThrowException(){
+        //arrange
+        //act
+        //assert
+    }
+
+    @Test
+    void nullJobYearsShouldThrowException(){
+        //arrange
+        //act
+        //assert
+    }
+
 }
