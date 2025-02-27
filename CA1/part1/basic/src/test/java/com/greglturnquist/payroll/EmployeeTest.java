@@ -182,4 +182,38 @@ class EmployeeTest {
         // assert
         assertFalse(result);
     }
+
+    @Test
+    void shouldReturnSameHashCodeForEqualEmployees() {
+        // arrange
+        Employee employee1 = new Employee("Ruben", "Rocha", "Student", 5);
+        Employee employee2 = new Employee("Ruben", "Rocha", "Student", 5);
+
+        employee1.setId(1L);
+        employee2.setId(1L);
+
+        // act
+        int hashCode1 = employee1.hashCode();
+        int hashCode2 = employee2.hashCode();
+
+        // assert
+        assertEquals(hashCode1, hashCode2);
+    }
+
+    @Test
+    void shouldReturnDifferentHashCodeForDifferentEmployees() {
+        // arrange
+        Employee employee1 = new Employee("Ruben", "Rocha", "Student", 5);
+        Employee employee2 = new Employee("Alexandre", "Costa", "Teacher", 1);
+
+        employee1.setId(1L);
+        employee2.setId(2L);
+
+        // act
+        int hashCode1 = employee1.hashCode();
+        int hashCode2 = employee2.hashCode();
+
+        // assert
+        assertNotEquals(hashCode1, hashCode2);
+    }
 }
