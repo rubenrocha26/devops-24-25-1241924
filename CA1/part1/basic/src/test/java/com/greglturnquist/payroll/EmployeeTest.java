@@ -55,4 +55,18 @@ class EmployeeTest {
         assertThrows(Exception.class, () -> new Employee("Ruben",null, "Student", 5));
     }
 
+    @Test
+    void emptyDescriptionShouldThrowException(){
+        //arrange
+        //act
+        //assert
+    }
+
+    @Test
+    void nullDescriptionShouldThrowException(){
+        //arrange
+        //act
+        //assert
+    }
+
 }
