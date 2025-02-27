@@ -44,7 +44,11 @@ public class Employee {
 		}
 		this.firstName = firstName;
 
+		if(!isAttributeValid(lastName)){
+			throw new IllegalArgumentException("FirstName cannot be empty or null");
+		}
 		this.lastName = lastName;
+
 		this.description = description;
 		this.jobYears = jobYears;
 	}
