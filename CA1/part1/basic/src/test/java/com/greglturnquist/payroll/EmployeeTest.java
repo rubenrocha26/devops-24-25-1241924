@@ -23,4 +23,20 @@ class EmployeeTest {
         assertNotNull(employee);
     }
 
+    @Test
+    void emptyFirstNameShouldThrowException(){
+        //arrange
+        //act
+        //assert
+        assertThrows(Exception.class, () -> new Employee("","Rocha", "Student", 5));
+    }
+
+    @Test
+    void nullFirstNameShouldThrowException(){
+        //arrange
+        //act
+        //assert
+        assertThrows(Exception.class, () -> new Employee(null,"Rocha", "Student", 5));
+    }
+
 }

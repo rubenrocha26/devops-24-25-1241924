@@ -39,7 +39,11 @@ public class Employee {
 
 	//Constructor
 	public Employee(String firstName, String lastName, String description, int jobYears) {
+		if(!isAttributeValid(firstName)){
+			throw new IllegalArgumentException("FirstName cannot be empty or null");
+		}
 		this.firstName = firstName;
+
 		this.lastName = lastName;
 		this.description = description;
 		this.jobYears = jobYears;
@@ -95,6 +99,10 @@ public class Employee {
 		this.description = description;
 	}
 
+	public int getJobYears(){return jobYears;}
+
+	public void setJobYears(int jobYears){this.jobYears = jobYears;}
+
 	@Override
 	public String toString() {
 		return "Employee{" +
@@ -103,6 +111,13 @@ public class Employee {
 			", lastName='" + lastName + '\'' +
 			", description='" + description + '\'' +
 			'}';
+	}
+
+	private boolean isAttributeValid(String attribute){
+		if(attribute==null || attribute.isEmpty()){
+			return false;
+		}
+		return true;
 	}
 }
 // end::code[]
