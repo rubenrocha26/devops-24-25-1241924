@@ -218,7 +218,7 @@ class EmployeeTest {
     }
 
     @Test
-    void shouldReturnEmployeeId(){
+    void shouldReturnEmployeeId() {
         //arrange
         Employee employee1 = new Employee("Ruben", "Rocha", "Student", 5);
 
@@ -228,6 +228,15 @@ class EmployeeTest {
         Long id = employee1.getId();
         //assert
         assertEquals(1L, id);
+    }
 
+    @Test
+    void shouldReturnEmployeeFirstName(){
+        //arrange
+        Employee employee1 = new Employee("Ruben", "Rocha", "Student", 5);
+        //act
+        String firstName = employee1.getFirstName();
+        //assert
+        assertEquals(firstName, "Ruben");
     }
 }
