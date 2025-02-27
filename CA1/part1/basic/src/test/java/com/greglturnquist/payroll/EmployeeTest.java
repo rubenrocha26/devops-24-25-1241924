@@ -216,4 +216,18 @@ class EmployeeTest {
         // assert
         assertNotEquals(hashCode1, hashCode2);
     }
+
+    @Test
+    void shouldReturnEmployeeId(){
+        //arrange
+        Employee employee1 = new Employee("Ruben", "Rocha", "Student", 5);
+
+        employee1.setId(1L);
+
+        //act
+        Long id = employee1.getId();
+        //assert
+        assertEquals(1L, id);
+
+    }
 }
