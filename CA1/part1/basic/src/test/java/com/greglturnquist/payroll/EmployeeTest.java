@@ -292,4 +292,25 @@ class EmployeeTest {
         //assert
         assertEquals("Teacher", result);
     }
+
+    @Test
+    void shouldReturnEmployeeJobYears(){
+        //arrange
+        Employee employee1 = new Employee("Ruben", "Rocha", "Student", 5);
+        //act
+        int result = employee1.getJobYears();
+        //assert
+        assertEquals(5, result);
+    }
+
+    @Test
+    void shouldSetEmployeeJobYears(){
+        //arrange
+        Employee employee1 = new Employee("Ruben", "Rocha", "Student", 5);
+        //act
+        employee1.setJobYears(4);
+        int result = employee1.getJobYears();
+        //assert
+        assertEquals(4, result);
+    }
 }
