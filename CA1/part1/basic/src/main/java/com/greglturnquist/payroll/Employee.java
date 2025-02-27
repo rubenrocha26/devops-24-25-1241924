@@ -53,6 +53,10 @@ public class Employee {
 			throw new IllegalArgumentException("Description cannot be empty or null");
 		}
 		this.description = description;
+
+		if(jobYears<0){
+			throw new IllegalArgumentException("JobYears cannot be negative");
+		}
 		this.jobYears = jobYears;
 	}
 

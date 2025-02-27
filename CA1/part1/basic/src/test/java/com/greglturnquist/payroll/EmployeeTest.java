@@ -74,17 +74,10 @@ class EmployeeTest {
     }
 
     @Test
-    void emptyJobYearsShouldThrowException(){
+    void negativeJobYearsShouldThrowException(){
         //arrange
         //act
         //assert
+        assertThrows(Exception.class, () -> new Employee("Ruben","Rocha", "Student",-1));
     }
-
-    @Test
-    void nullJobYearsShouldThrowException(){
-        //arrange
-        //act
-        //assert
-    }
-
 }
