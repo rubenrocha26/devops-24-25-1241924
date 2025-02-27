@@ -258,7 +258,7 @@ class EmployeeTest {
         //act
         String lastName = employee1.getLastName();
         //assert
-        assertEquals(lastName, "Rocha");
+        assertEquals("Rocha", lastName);
     }
 
     @Test
@@ -270,5 +270,26 @@ class EmployeeTest {
         String result = employee1.getLastName();
         //assert
         assertEquals("Costa",result);
+    }
+
+    @Test
+    void shouldReturnEmployeeDescription(){
+        //arrange
+        Employee employee1 = new Employee("Ruben", "Rocha", "Student", 5);
+        //act
+        String result = employee1.getDescription();
+        //assert
+        assertEquals("Student", result);
+    }
+
+    @Test
+    void shouldSetEmployeeDescription(){
+        //arrange
+        Employee employee1 = new Employee("Ruben", "Rocha", "Student", 5);
+        //act
+        employee1.setDescription("Teacher");
+        String result = employee1.getDescription();
+        //assert
+        assertEquals("Teacher", result);
     }
 }
