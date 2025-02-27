@@ -60,6 +60,8 @@ class EmployeeTest {
         //arrange
         //act
         //assert
+        assertThrows(Exception.class, () -> new Employee("Ruben","Rocha", "", 5));
+
     }
 
     @Test
@@ -67,6 +69,8 @@ class EmployeeTest {
         //arrange
         //act
         //assert
+        assertThrows(Exception.class, () -> new Employee("Ruben","Rocha", null, 5));
+
     }
 
 }

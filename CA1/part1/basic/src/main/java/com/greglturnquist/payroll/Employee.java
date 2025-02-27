@@ -39,16 +39,19 @@ public class Employee {
 
 	//Constructor
 	public Employee(String firstName, String lastName, String description, int jobYears) {
-		if(!isAttributeValid(firstName)){
+		if(isAttributeInvalid(firstName)){
 			throw new IllegalArgumentException("FirstName cannot be empty or null");
 		}
 		this.firstName = firstName;
 
-		if(!isAttributeValid(lastName)){
-			throw new IllegalArgumentException("FirstName cannot be empty or null");
+		if(isAttributeInvalid(lastName)){
+			throw new IllegalArgumentException("LastName cannot be empty or null");
 		}
 		this.lastName = lastName;
 
+		if(isAttributeInvalid(description)){
+			throw new IllegalArgumentException("Description cannot be empty or null");
+		}
 		this.description = description;
 		this.jobYears = jobYears;
 	}
@@ -117,11 +120,11 @@ public class Employee {
 			'}';
 	}
 
-	private boolean isAttributeValid(String attribute){
+	private boolean isAttributeInvalid(String attribute){
 		if(attribute==null || attribute.isEmpty()){
-			return false;
+			return true;
 		}
-		return true;
+		return false;
 	}
 }
 // end::code[]
