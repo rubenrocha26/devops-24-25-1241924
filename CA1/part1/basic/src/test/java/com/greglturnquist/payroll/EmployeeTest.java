@@ -244,6 +244,7 @@ class EmployeeTest {
         assertNotEquals(hashCode1, hashCode2);
     }
 
+    //Gets and Sets
     @Test
     void shouldReturnEmployeeId() {
         //arrange
@@ -279,6 +280,24 @@ class EmployeeTest {
     }
 
     @Test
+    void whenSetWithEmptyFirstNameThrowsException() {
+        //arrange
+        String firstName = "";
+        Employee employee1 = new Employee("Ruben", "Rocha", "Student", 5, "rubenrocha26@hotmail.com");
+        //act+assert
+        assertThrows(Exception.class, () -> employee1.setFirstName(firstName));
+    }
+
+    @Test
+    void whenSetWithNullFirstNameThrowsException(){
+        //arrange
+        String firstName = null;
+        Employee employee1 = new Employee("Ruben", "Rocha", "Student", 5, "rubenrocha26@hotmail.com");
+        //act + assert
+        assertThrows(Exception.class, () -> employee1.setFirstName(firstName));
+    }
+
+    @Test
     void shouldReturnEmployeeLastName(){
         //arrange
         Employee employee1 = new Employee("Ruben", "Rocha", "Student", 5, "rubenrocha26@hotmail.com");
@@ -297,6 +316,24 @@ class EmployeeTest {
         String result = employee1.getLastName();
         //assert
         assertEquals("Costa",result);
+    }
+
+    @Test
+    void whenSetWithEmptyLastNameThrowsException() {
+        //arrange
+        String lastName = "";
+        Employee employee1 = new Employee("Ruben", "Rocha", "Student", 5, "rubenrocha26@hotmail.com");
+        //act+assert
+        assertThrows(Exception.class, () -> employee1.setLastName(lastName));
+    }
+
+    @Test
+    void whenSetWithNullLastNameThrowsException() {
+        //arrange
+        String lastName = null;
+        Employee employee1 = new Employee("Ruben", "Rocha", "Student", 5, "rubenrocha26@hotmail.com");
+        //act+assert
+        assertThrows(Exception.class, () -> employee1.setLastName(lastName));
     }
 
     @Test
@@ -321,6 +358,24 @@ class EmployeeTest {
     }
 
     @Test
+    void whenSetWithEmptyDescriptionNameThrowsException() {
+        //arrange
+        String description = "";
+        Employee employee1 = new Employee("Ruben", "Rocha", "Student", 5, "rubenrocha26@hotmail.com");
+        //act+assert
+        assertThrows(Exception.class, () -> employee1.setDescription(description));
+    }
+
+    @Test
+    void whenSetWithNullDescriptionNameThrowsException() {
+        //arrange
+        String description = null;
+        Employee employee1 = new Employee("Ruben", "Rocha", "Student", 5, "rubenrocha26@hotmail.com");
+        //act+assert
+        assertThrows(Exception.class, () -> employee1.setDescription(description));
+    }
+
+    @Test
     void shouldReturnEmployeeJobYears(){
         //arrange
         Employee employee1 = new Employee("Ruben", "Rocha", "Student", 5, "rubenrocha26@hotmail.com");
@@ -339,6 +394,15 @@ class EmployeeTest {
         int result = employee1.getJobYears();
         //assert
         assertEquals(4, result);
+    }
+
+    @Test
+    void whenSetWithNegativeJobYearsThrowsException(){
+        //arrange
+        int jobYears = -1;
+        Employee employee1 = new Employee("Ruben", "Rocha", "Student", 5, "rubenrocha26@hotmail.com");
+        //act+assert
+        assertThrows(Exception.class, () -> employee1.setJobYears(jobYears));
     }
 
     @Test
