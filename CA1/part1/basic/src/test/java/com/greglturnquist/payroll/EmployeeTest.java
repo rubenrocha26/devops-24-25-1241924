@@ -97,6 +97,14 @@ class EmployeeTest {
         assertThrows(Exception.class, () -> new Employee("Ruben","Rocha", "Student",5,null));
     }
 
+    @Test
+    void invalidEmailShouldThrowException(){
+        //arrange
+        //act
+        //assert
+        assertThrows(Exception.class, () -> new Employee("Ruben","Rocha", "Student",5,"rubenrocha26hotmail.com"));
+    }
+
     //EqualsOverride Tests
     @Test
     void shouldReturnTrueIfSameEmployeeAttributes(){
@@ -441,6 +449,15 @@ class EmployeeTest {
     void whenSetWithNullEmailThrowsException(){
         //arrange
         String email = null;
+        Employee employee = new Employee("Ruben", "Rocha", "Teacher", 5, "rubenrocha26@hotmail.com");
+        //act+assert
+        assertThrows(Exception.class, () -> employee.setEmail(email));
+    }
+
+    @Test
+    void whenSetWithoutAtSymbolEmailThrowsException() {
+        //arrange
+        String email = "rubenrocha26hotmail.com";
         Employee employee = new Employee("Ruben", "Rocha", "Teacher", 5, "rubenrocha26@hotmail.com");
         //act+assert
         assertThrows(Exception.class, () -> employee.setEmail(email));

@@ -62,8 +62,8 @@ public class Employee {
 		}
 		this.jobYears = jobYears;
 
-		if (isAttributeInvalid(email)) {
-			throw new IllegalArgumentException("Email cannot be empty or null");
+		if (isEmailInvalid(email)) {
+			throw new IllegalArgumentException("Email cannot be empty, null or invalid");
 		}
 		this.email = email;
 	}
@@ -129,8 +129,8 @@ public class Employee {
 	public String getEmail(){return email;}
 
 	public void setEmail(String email){
-		if(isAttributeInvalid(email)){
-			throw new IllegalArgumentException("Email cannot be empty or null");
+		if(isEmailInvalid(email)){
+			throw new IllegalArgumentException("Email cannot be empty, null or invalid");
 		}
 		this.email = email;}
 
@@ -151,6 +151,13 @@ public class Employee {
 			return true;
 		}
 		return false;
+	}
+
+	private boolean isEmailInvalid(String email){
+		if(email==null || email.isEmpty()){
+			return true;
+		}
+		return !email.matches(".*@.*");
 	}
 }
 // end::code[]
