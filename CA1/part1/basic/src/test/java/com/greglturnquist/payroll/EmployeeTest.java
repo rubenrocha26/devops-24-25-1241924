@@ -81,6 +81,14 @@ class EmployeeTest {
         assertThrows(Exception.class, () -> new Employee("Ruben","Rocha", "Student",-1,"rubenrocha26@hotmail.com"));
     }
 
+    @Test
+    void emptyEmailShouldThrowException(){
+        //arrange
+        //act
+        //assert
+        assertThrows(Exception.class, () -> new Employee("Ruben","Rocha", "Student",5,""));
+    }
+
     //EqualsOverride Tests
     @Test
     void shouldReturnTrueIfSameEmployeeAttributes(){

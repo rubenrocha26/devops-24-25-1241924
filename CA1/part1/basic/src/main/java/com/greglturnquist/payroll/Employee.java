@@ -60,6 +60,9 @@ public class Employee {
 		}
 		this.jobYears = jobYears;
 
+		if(isAttributeInvalid(email)){
+			throw new IllegalArgumentException("Email cannot be empty or null");
+		}
 		this.email = email;
 	}
 
@@ -72,12 +75,13 @@ public class Employee {
 			Objects.equals(firstName, employee.firstName) &&
 			Objects.equals(lastName, employee.lastName) &&
 			Objects.equals(description, employee.description) &&
-			Objects.equals(jobYears, employee.jobYears);
+			Objects.equals(jobYears, employee.jobYears) &&
+			Objects.equals(email, employee.email);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, firstName, lastName, description, jobYears);
+		return Objects.hash(id, firstName, lastName, description, jobYears, email);
 	}
 
 	public Long getId() {
@@ -115,6 +119,14 @@ public class Employee {
 	public int getJobYears(){return jobYears;}
 
 	public void setJobYears(int jobYears){this.jobYears = jobYears;}
+
+	public String getEmail(){return email;}
+
+	public void setEmail(String email){
+		if(isAttributeInvalid(email)){
+			throw new IllegalArgumentException("Email cannot be empty or null");
+		}
+		this.email = email;}
 
 	@Override
 	public String toString() {
