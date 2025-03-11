@@ -18,7 +18,7 @@ class EmployeeTest {
     void shouldCreateEmployeeWithAllArgs(){
         //arrange
         //act
-        Employee employee = new Employee("Ruben", "Rocha", "Student", 5);
+        Employee employee = new Employee("Ruben", "Rocha", "Student", 5, "rubenrocha26@hotmail.com");
         //assert
         assertNotNull(employee);
     }
@@ -28,7 +28,7 @@ class EmployeeTest {
         //arrange
         //act
         //assert
-        assertThrows(Exception.class, () -> new Employee("","Rocha", "Student", 5));
+        assertThrows(Exception.class, () -> new Employee("","Rocha", "Student", 5,"rubenrocha26@hotmail.com"));
     }
 
     @Test
@@ -36,7 +36,7 @@ class EmployeeTest {
         //arrange
         //act
         //assert
-        assertThrows(Exception.class, () -> new Employee(null,"Rocha", "Student", 5));
+        assertThrows(Exception.class, () -> new Employee(null,"Rocha", "Student", 5,"rubenrocha26@hotmail.com"));
     }
 
     @Test
@@ -44,7 +44,7 @@ class EmployeeTest {
         //arrange
         //act
         //assert
-        assertThrows(Exception.class, () -> new Employee("Ruben","", "Student", 5));
+        assertThrows(Exception.class, () -> new Employee("Ruben","", "Student", 5,"rubenrocha26@hotmail.com"));
     }
 
     @Test
@@ -52,7 +52,7 @@ class EmployeeTest {
         //arrange
         //act
         //assert
-        assertThrows(Exception.class, () -> new Employee("Ruben",null, "Student", 5));
+        assertThrows(Exception.class, () -> new Employee("Ruben",null, "Student", 5,"rubenrocha26@hotmail.com"));
     }
 
     @Test
@@ -60,7 +60,7 @@ class EmployeeTest {
         //arrange
         //act
         //assert
-        assertThrows(Exception.class, () -> new Employee("Ruben","Rocha", "", 5));
+        assertThrows(Exception.class, () -> new Employee("Ruben","Rocha", "", 5,"rubenrocha26@hotmail.com"));
 
     }
 
@@ -69,7 +69,7 @@ class EmployeeTest {
         //arrange
         //act
         //assert
-        assertThrows(Exception.class, () -> new Employee("Ruben","Rocha", null, 5));
+        assertThrows(Exception.class, () -> new Employee("Ruben","Rocha", null, 5,"rubenrocha26@hotmail.com"));
 
     }
 
@@ -78,15 +78,15 @@ class EmployeeTest {
         //arrange
         //act
         //assert
-        assertThrows(Exception.class, () -> new Employee("Ruben","Rocha", "Student",-1));
+        assertThrows(Exception.class, () -> new Employee("Ruben","Rocha", "Student",-1,"rubenrocha26@hotmail.com"));
     }
 
     //EqualsOverride Tests
     @Test
     void shouldReturnTrueIfSameEmployeeAttributes(){
         //arrange
-        Employee employee = new Employee("Ruben", "Rocha", "Student", 5);
-        Employee employee2 = new Employee("Ruben", "Rocha", "Student", 5);
+        Employee employee = new Employee("Ruben", "Rocha", "Student", 5,"rubenrocha26@hotmail.com");
+        Employee employee2 = new Employee("Ruben", "Rocha", "Student", 5,"rubenrocha26@hotmail.com");
         //act
         boolean result = employee.equals(employee2);
         //assert
@@ -96,7 +96,7 @@ class EmployeeTest {
     @Test
     void shouldReturnTrueIfSameEmployee(){
         //arrange
-        Employee employee = new Employee("Ruben", "Rocha", "Student", 5);
+        Employee employee = new Employee("Ruben", "Rocha", "Student", 5,"rubenrocha26@hotmail.com");
         //act
         boolean result = employee.equals(employee);
         //assert
@@ -107,8 +107,8 @@ class EmployeeTest {
     @Test
     void shouldReturnFalseIfDifferentEmployeeId(){
         //arrange
-        Employee employee = new Employee("Ruben", "Rocha", "Student", 5);
-        Employee employee2 = new Employee("Ruben", "Rocha", "Student", 5);
+        Employee employee = new Employee("Ruben", "Rocha", "Student", 5,"rubenrocha26@hotmail.com");
+        Employee employee2 = new Employee("Ruben", "Rocha", "Student", 5,"rubenrocha26@hotmail.com");
 
         employee.setId(1L);
         employee2.setId(2L);
@@ -121,8 +121,8 @@ class EmployeeTest {
     @Test
     void shouldReturnFalseIfDifferentFirstName(){
         //arrange
-        Employee employee = new Employee("Alexandre", "Rocha", "Student", 5);
-        Employee employee2 = new Employee("Ruben", "Rocha", "Student", 5);
+        Employee employee = new Employee("Alexandre", "Rocha", "Student", 5,"rubenrocha26@hotmail.com");
+        Employee employee2 = new Employee("Ruben", "Rocha", "Student", 5,"rubenrocha26@hotmail.com");
         //act
         boolean result = employee.equals(employee2);
         //assert
@@ -132,8 +132,8 @@ class EmployeeTest {
     @Test
     void shouldReturnFalseIfDifferentLastName(){
         //arrange
-        Employee employee = new Employee("Ruben", "Costa", "Student", 5);
-        Employee employee2 = new Employee("Ruben", "Rocha", "Student", 5);
+        Employee employee = new Employee("Ruben", "Costa", "Student", 5,"rubenrocha26@hotmail.com");
+        Employee employee2 = new Employee("Ruben", "Rocha", "Student", 5,"rubenrocha26@hotmail.com");
         //act
         boolean result = employee.equals(employee2);
         //assert
@@ -143,8 +143,8 @@ class EmployeeTest {
     @Test
     void shouldReturnFalseIfDifferentDescription(){
         //arrange
-        Employee employee = new Employee("Ruben", "Rocha", "Teacher", 5);
-        Employee employee2 = new Employee("Ruben", "Rocha", "Student", 5);
+        Employee employee = new Employee("Ruben", "Rocha", "Teacher", 5,"rubenrocha26@hotmail.com");
+        Employee employee2 = new Employee("Ruben", "Rocha", "Student", 5, "rubenrocha26@hotmail.com");
         //act
         boolean result = employee.equals(employee2);
         //assert
@@ -154,8 +154,8 @@ class EmployeeTest {
     @Test
     void shouldReturnFalseIfDifferentJobYears(){
         //arrange
-        Employee employee = new Employee("Ruben", "Rocha", "Teacher", 5);
-        Employee employee2 = new Employee("Ruben", "Rocha", "Student", 1);
+        Employee employee = new Employee("Ruben", "Rocha", "Teacher", 5, "rubenrocha26@hotmail.com");
+        Employee employee2 = new Employee("Ruben", "Rocha", "Student", 1, "rubenrocha26@hotmail.com");
         //act
         boolean result = employee.equals(employee2);
         //assert
@@ -165,7 +165,7 @@ class EmployeeTest {
     @Test
     void shouldReturnFalseIfNullEmployeeCompared(){
         //arrange
-        Employee employee = new Employee("Ruben", "Rocha", "Student", 5);
+        Employee employee = new Employee("Ruben", "Rocha", "Student", 5, "rubenrocha26@hotmail.com");
         //act
         boolean result = employee.equals(null);
         //assert
@@ -175,7 +175,7 @@ class EmployeeTest {
     @Test
     void shouldReturnFalseIfDifferentClass() {
         // arrange
-        Employee employee = new Employee("Ruben", "Rocha", "Student", 5);
+        Employee employee = new Employee("Ruben", "Rocha", "Student", 5,"rubenrocha26@hotmail.com");
         String differentClassObject = "I am not an Employee";
         // act
         boolean result = employee.equals(differentClassObject);
@@ -186,8 +186,8 @@ class EmployeeTest {
     @Test
     void shouldReturnSameHashCodeForEqualEmployees() {
         // arrange
-        Employee employee1 = new Employee("Ruben", "Rocha", "Student", 5);
-        Employee employee2 = new Employee("Ruben", "Rocha", "Student", 5);
+        Employee employee1 = new Employee("Ruben", "Rocha", "Student", 5, "rubenrocha26@hotmail.com");
+        Employee employee2 = new Employee("Ruben", "Rocha", "Student", 5, "rubenrocha26@hotmail.com");
 
         employee1.setId(1L);
         employee2.setId(1L);
@@ -203,8 +203,8 @@ class EmployeeTest {
     @Test
     void shouldReturnDifferentHashCodeForDifferentEmployees() {
         // arrange
-        Employee employee1 = new Employee("Ruben", "Rocha", "Student", 5);
-        Employee employee2 = new Employee("Alexandre", "Costa", "Teacher", 1);
+        Employee employee1 = new Employee("Ruben", "Rocha", "Student", 5, "rubenrocha26@hotmail.com");
+        Employee employee2 = new Employee("Alexandre", "Costa", "Teacher", 1, "rubenrocha26@hotmail.com");
 
         employee1.setId(1L);
         employee2.setId(2L);
@@ -220,7 +220,7 @@ class EmployeeTest {
     @Test
     void shouldReturnEmployeeId() {
         //arrange
-        Employee employee1 = new Employee("Ruben", "Rocha", "Student", 5);
+        Employee employee1 = new Employee("Ruben", "Rocha", "Student", 5, "rubenrocha26@hotmail.com");
 
         employee1.setId(1L);
 
@@ -233,7 +233,7 @@ class EmployeeTest {
     @Test
     void shouldReturnEmployeeFirstName(){
         //arrange
-        Employee employee1 = new Employee("Ruben", "Rocha", "Student", 5);
+        Employee employee1 = new Employee("Ruben", "Rocha", "Student", 5, "rubenrocha26@hotmail.com");
         //act
         String firstName = employee1.getFirstName();
         //assert
@@ -243,7 +243,7 @@ class EmployeeTest {
     @Test
     void shouldSetEmployeeFirstName(){
         //arrange
-        Employee employee1 = new Employee("Ruben", "Rocha", "Student", 5);
+        Employee employee1 = new Employee("Ruben", "Rocha", "Student", 5, "rubenrocha26@hotmail.com");
         //act
         employee1.setFirstName("Alexandre");
         String result = employee1.getFirstName();
@@ -254,7 +254,7 @@ class EmployeeTest {
     @Test
     void shouldReturnEmployeeLastName(){
         //arrange
-        Employee employee1 = new Employee("Ruben", "Rocha", "Student", 5);
+        Employee employee1 = new Employee("Ruben", "Rocha", "Student", 5, "rubenrocha26@hotmail.com");
         //act
         String lastName = employee1.getLastName();
         //assert
@@ -264,7 +264,7 @@ class EmployeeTest {
     @Test
     void shouldSetEmployeeLastName(){
         //arrange
-        Employee employee1 = new Employee("Ruben", "Rocha", "Student", 5);
+        Employee employee1 = new Employee("Ruben", "Rocha", "Student", 5, "rubenrocha26@hotmail.com");
         //act
         employee1.setLastName("Costa");
         String result = employee1.getLastName();
@@ -275,7 +275,7 @@ class EmployeeTest {
     @Test
     void shouldReturnEmployeeDescription(){
         //arrange
-        Employee employee1 = new Employee("Ruben", "Rocha", "Student", 5);
+        Employee employee1 = new Employee("Ruben", "Rocha", "Student", 5, "rubenrocha26@hotmail.com");
         //act
         String result = employee1.getDescription();
         //assert
@@ -285,7 +285,7 @@ class EmployeeTest {
     @Test
     void shouldSetEmployeeDescription(){
         //arrange
-        Employee employee1 = new Employee("Ruben", "Rocha", "Student", 5);
+        Employee employee1 = new Employee("Ruben", "Rocha", "Student", 5, "rubenrocha26@hotmail.com");
         //act
         employee1.setDescription("Teacher");
         String result = employee1.getDescription();
@@ -296,7 +296,7 @@ class EmployeeTest {
     @Test
     void shouldReturnEmployeeJobYears(){
         //arrange
-        Employee employee1 = new Employee("Ruben", "Rocha", "Student", 5);
+        Employee employee1 = new Employee("Ruben", "Rocha", "Student", 5, "rubenrocha26@hotmail.com");
         //act
         int result = employee1.getJobYears();
         //assert
@@ -306,7 +306,7 @@ class EmployeeTest {
     @Test
     void shouldSetEmployeeJobYears(){
         //arrange
-        Employee employee1 = new Employee("Ruben", "Rocha", "Student", 5);
+        Employee employee1 = new Employee("Ruben", "Rocha", "Student", 5, "rubenrocha26@hotmail.com");
         //act
         employee1.setJobYears(4);
         int result = employee1.getJobYears();
@@ -317,7 +317,7 @@ class EmployeeTest {
     @Test
     void shouldReturnEmployeeToString(){
         //arrange
-        Employee employee1 = new Employee("Ruben", "Rocha", "Student", 5);
+        Employee employee1 = new Employee("Ruben", "Rocha", "Student", 5, "rubenrocha26@hotmail.com");
         employee1.setId(1L);
         //act
         String result = employee1.toString();

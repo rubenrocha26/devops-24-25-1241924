@@ -33,12 +33,13 @@ public class Employee {
 	private String lastName;
 	private String description;
 	private int jobYears;
+	private String email;
 
 	//Empty Constructor
 	public Employee() {}
 
 	//Constructor
-	public Employee(String firstName, String lastName, String description, int jobYears) {
+	public Employee(String firstName, String lastName, String description, int jobYears, String email) {
 		if(isAttributeInvalid(firstName)){
 			throw new IllegalArgumentException("FirstName cannot be empty or null");
 		}
@@ -58,6 +59,8 @@ public class Employee {
 			throw new IllegalArgumentException("JobYears cannot be negative");
 		}
 		this.jobYears = jobYears;
+
+		this.email = email;
 	}
 
 	@Override
