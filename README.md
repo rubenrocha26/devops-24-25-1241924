@@ -17,7 +17,6 @@ Each directory within this repository corresponds to a specific class assignment
 
 - [CA1](https://github.com/rubenrocha26/devops-24-25-1241924/tree/main/CA1)
     - [Part 1](https://github.com/rubenrocha26/devops-24-25-1241924/tree/main/CA1/part1/basic)
-        - [README](https://github.com/rubenrocha26/devops-24-25-1241924/tree/main/CA1/part1/basic/README.md)
 
     - [Part 2](#part-2)
 
