@@ -89,6 +89,14 @@ class EmployeeTest {
         assertThrows(Exception.class, () -> new Employee("Ruben","Rocha", "Student",5,""));
     }
 
+    @Test
+    void nullEmailShouldThrowException(){
+        //arrange
+        //act
+        //assert
+        assertThrows(Exception.class, () -> new Employee("Ruben","Rocha", "Student",5,null));
+    }
+
     //EqualsOverride Tests
     @Test
     void shouldReturnTrueIfSameEmployeeAttributes(){
@@ -163,7 +171,18 @@ class EmployeeTest {
     void shouldReturnFalseIfDifferentJobYears(){
         //arrange
         Employee employee = new Employee("Ruben", "Rocha", "Teacher", 5, "rubenrocha26@hotmail.com");
-        Employee employee2 = new Employee("Ruben", "Rocha", "Student", 1, "rubenrocha26@hotmail.com");
+        Employee employee2 = new Employee("Ruben", "Rocha", "Teacher", 1, "rubenrocha26@hotmail.com");
+        //act
+        boolean result = employee.equals(employee2);
+        //assert
+        assertFalse(result);
+    }
+
+    @Test
+    void shouldReturnFalseIfDifferentEmail(){
+        //arrange
+        Employee employee = new Employee("Ruben", "Rocha", "Teacher", 5, "rubenrocha26@hotmail.com");
+        Employee employee2 = new Employee("Ruben", "Rocha", "Teacher", 5, "rubenrocha26@gmail.com");
         //act
         boolean result = employee.equals(employee2);
         //assert
@@ -320,6 +339,47 @@ class EmployeeTest {
         int result = employee1.getJobYears();
         //assert
         assertEquals(4, result);
+    }
+
+    @Test
+    void shouldReturnEmployeeEmail(){
+        //arrange
+        String email = "rubenrocha26@gmail.com";
+        Employee employee = new Employee("Ruben", "Rocha", "Teacher", 5, email);
+        //act
+        String result = employee.getEmail();
+        //assert
+        assertEquals(email, result);
+    }
+
+    @Test
+    void shouldSetEmployeeEmail(){
+        //arrange
+        String email = "rubenrocha26@gmail.com";
+        Employee employee = new Employee("Ruben", "Rocha", "Teacher", 5, "rubenrocha26@hotmail.com");
+        //act
+        employee.setEmail(email);
+        String result = employee.getEmail();
+        //assert
+        assertEquals(email, result);
+    }
+
+    @Test
+    void whenSetWithEmptyEmailThrowsException(){
+        //arrange
+        String email = "";
+        Employee employee = new Employee("Ruben", "Rocha", "Teacher", 5, "rubenrocha26@hotmail.com");
+        //act+assert
+        assertThrows(Exception.class, () -> employee.setEmail(email));
+    }
+
+    @Test
+    void whenSetWithNullEmailThrowsException(){
+        //arrange
+        String email = null;
+        Employee employee = new Employee("Ruben", "Rocha", "Teacher", 5, "rubenrocha26@hotmail.com");
+        //act+assert
+        assertThrows(Exception.class, () -> employee.setEmail(email));
     }
 
     @Test
