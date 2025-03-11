@@ -28,36 +28,44 @@ import javax.persistence.Id;
 @Entity // <1>
 public class Employee {
 
-	private @Id @GeneratedValue Long id; // <2>
+	private @Id
+	@GeneratedValue Long id; // <2>
 	private String firstName;
 	private String lastName;
 	private String description;
 	private int jobYears;
+	private String email;
 
 	//Empty Constructor
-	public Employee() {}
+	public Employee() {
+	}
 
 	//Constructor
-	public Employee(String firstName, String lastName, String description, int jobYears) {
-		if(isAttributeInvalid(firstName)){
+	public Employee(String firstName, String lastName, String description, int jobYears, String email) {
+		if (isAttributeInvalid(firstName)) {
 			throw new IllegalArgumentException("FirstName cannot be empty or null");
 		}
 		this.firstName = firstName;
 
-		if(isAttributeInvalid(lastName)){
+		if (isAttributeInvalid(lastName)) {
 			throw new IllegalArgumentException("LastName cannot be empty or null");
 		}
 		this.lastName = lastName;
 
-		if(isAttributeInvalid(description)){
+		if (isAttributeInvalid(description)) {
 			throw new IllegalArgumentException("Description cannot be empty or null");
 		}
 		this.description = description;
 
-		if(jobYears<0){
+		if (jobYears < 0) {
 			throw new IllegalArgumentException("JobYears cannot be negative");
 		}
 		this.jobYears = jobYears;
+
+		if (isAttributeInvalid(email)) {
+			throw new IllegalArgumentException("Email cannot be empty or null");
+		}
+		this.email = email;
 	}
 
 	@Override
@@ -66,52 +74,65 @@ public class Employee {
 		if (o == null || getClass() != o.getClass()) return false;
 		Employee employee = (Employee) o;
 		return Objects.equals(id, employee.id) &&
-			Objects.equals(firstName, employee.firstName) &&
-			Objects.equals(lastName, employee.lastName) &&
-			Objects.equals(description, employee.description) &&
-			Objects.equals(jobYears, employee.jobYears);
+				Objects.equals(firstName, employee.firstName) &&
+				Objects.equals(lastName, employee.lastName) &&
+				Objects.equals(description, employee.description) &&
+				Objects.equals(jobYears, employee.jobYears) &&
+				Objects.equals(email, employee.email);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, firstName, lastName, description, jobYears);
+		return Objects.hash(id, firstName, lastName, description, jobYears, email);
 	}
 
-	public Long getId() {
-		return id;
-	}
+	public Long getId() {return id;}
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+	public void setId(Long id) {this.id = id;}
 
-	public String getFirstName() {
-		return firstName;
-	}
+	public String getFirstName() {return firstName;}
 
 	public void setFirstName(String firstName) {
+		if (isAttributeInvalid(firstName)) {
+			throw new IllegalArgumentException("First Name cannot be empty or null");
+		}
 		this.firstName = firstName;
 	}
 
-	public String getLastName() {
-		return lastName;
-	}
+	public String getLastName() {return lastName;}
 
 	public void setLastName(String lastName) {
+		if (isAttributeInvalid(lastName)) {
+			throw new IllegalArgumentException("Last Name cannot be empty or null");
+		}
 		this.lastName = lastName;
 	}
 
-	public String getDescription() {
-		return description;
-	}
+	public String getDescription() {return description;}
 
 	public void setDescription(String description) {
+		if (isAttributeInvalid(description)) {
+			throw new IllegalArgumentException("Description cannot be empty or null");
+		}
 		this.description = description;
 	}
 
-	public int getJobYears(){return jobYears;}
+	public int getJobYears() {return jobYears;}
 
-	public void setJobYears(int jobYears){this.jobYears = jobYears;}
+	public void setJobYears(int jobYears) {
+		if (jobYears < 0) {
+			throw new IllegalArgumentException("JobYears cannot be negative");
+		}
+		this.jobYears = jobYears;
+	}
+
+	public String getEmail(){return email;}
+
+	public void setEmail(String email){
+		if(isAttributeInvalid(email)){
+			throw new IllegalArgumentException("Email cannot be empty or null");
+		}
+		this.email = email;}
 
 	@Override
 	public String toString() {
@@ -121,6 +142,7 @@ public class Employee {
 			", lastName='" + lastName + '\'' +
 			", description='" + description + '\'' +
 			", jobYears='" + jobYears + '\'' +
+			", email='" + email + '\'' +
 			'}';
 	}
 
