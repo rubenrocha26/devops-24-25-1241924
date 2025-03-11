@@ -142,6 +142,7 @@ public class Employee {
 			", lastName='" + lastName + '\'' +
 			", description='" + description + '\'' +
 			", jobYears='" + jobYears + '\'' +
+			", email='" + email + '\'' +
 			'}';
 	}
 

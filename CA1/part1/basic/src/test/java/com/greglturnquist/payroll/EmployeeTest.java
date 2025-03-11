@@ -454,7 +454,7 @@ class EmployeeTest {
         //act
         String result = employee1.toString();
         // assert
-        String expected = "Employee{id=1, firstName='Ruben', lastName='Rocha', description='Student', jobYears='5'}";
+        String expected = "Employee{id=1, firstName='Ruben', lastName='Rocha', description='Student', jobYears='5', email='rubenrocha26@hotmail.com'}";
         assertEquals(expected, result);
 
     }
