@@ -15,8 +15,12 @@ Each directory within this repository corresponds to a specific class assignment
 
 ## Table of Contents
 
-- [CA1](https://github.com/rubenrocha26/devops-24-25-1241924/tree/main/CA1)
-    - [Part 1](https://github.com/rubenrocha26/devops-24-25-1241924/tree/main/CA1/part1/basic)
+- [CA1](CA1)
+    - [Part 1](CA1/part1/basic/README.md)
+      - [Part 1.1 Development Without Branches](CA1/part1/basic/README.md#part-11-development-without-branches)
+      - [Part 1.2 Development Using Branches](CA1/part1/basic/README.md#part-12-development-using-branches)
+      - [Alternative Solution](CA1/part1/basic/README.md#alternative-solution)
+      - [Conclusion](CA1/part1/basic/README.md#conclusion)
 
     - [Part 2](#part-2)
 
