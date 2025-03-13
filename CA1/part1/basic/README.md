@@ -686,7 +686,7 @@ At the conclusion of the assignment, **the repository was tagged with ca1-part1.
 
 The final state of the application, following the implementation of all new features, is illustrated below:
 
-![finalStateOfTheApplication.png](../../../../../finalStateOfTheApplication.png "Final State of The Application")
+![finalStateOfTheApplication](images/finalStateOfTheApplication.png)
 
 In our employee model, the fields **"First Name", "Last Name", and "Description"** were pre-existing components and remained unchanged throughout this project.
 
@@ -700,7 +700,7 @@ With these improvements, the application now provides a more comprehensive emplo
 
 ## Repository Branch Overview
 
-![currentBranches.png](../../../../../currentBranches.png "Branch Overview")
+![currentBranches](images/currentBranches.png)
 
 The image above displays the **current branches** within the repository, as revealed by executing the following command:
 
@@ -710,7 +710,7 @@ git branch
 
 Additionally, the subsequent image illustrates the **chronological** sequence of branches, highlighting the most recent contributions made to the repository.
 
-![chronologicalSequenceOfBranches.png](../../../../../chronologicalSequenceOfBranches.png "Chronological Branches Sequence")
+![chronologicalSequenceOfBranches](images/chronologicalSequenceOfBranches.png)
 
 Through this assignment, I gained valuable insights into the importance of using **branches** to isolate changes related to specific features or fixes. 
 This approach not only ensures the stability of the **main codebase** but also provides a **clear and organized history** of modifications, facilitating better collaboration and version control.
@@ -724,7 +724,7 @@ Below is a visual representation of the project's tags, generated using the foll
 ```bash
 git tag
 ```
-![projectTagsOverview.png](../../../../../projectTagsOverview.png "Project Tags")
+![projectTagsOverview](images/projectTagsOverview.png)
 
 The use of **tags** provided valuable insight into how to mark **significant points** in the project's history. 
 This practice is essential for:
@@ -745,7 +745,7 @@ This approach not only ensures a **clear history of the project's evolution but 
 
 Below is a visual **representation** of the issues that were created and successfully resolved during this assignment:
 
-![issueTracking.png](../../../../../issueTracking.png "Issue Tracking")
+![issueTracking](images/issueTracking.png)
 
 ---
 
