@@ -473,6 +473,5 @@ class EmployeeTest {
         // assert
         String expected = "Employee{id=1, firstName='Ruben', lastName='Rocha', description='Student', jobYears='5', email='rubenrocha26@hotmail.com'}";
         assertEquals(expected, result);
-
     }
 }

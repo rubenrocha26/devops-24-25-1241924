@@ -9,10 +9,10 @@ It is divided into multiple parts, each focusing on different aspects of version
 
 - [Part 1.1 Development Without Branches](#part-11-development-without-branches)
   - [Getting Started](#getting-started)
-  - [Goals and Requirements](#goals-and-requirement)
+  - [Goals and Requirements](#goals-and-requirements)
   - [Implementation](#implementation)
 
-- [Part 1.2 Development Using Branches](#part1-2)
+- [Part 1.2 Development Using Branches](#part-12-development-using-branches)
   - Goals and Requirements
   - Implementation
 
@@ -279,7 +279,202 @@ The key testing aspects include:
 - **Equality and Hashing:** Tested the proper implementation of the `equals` and `hashCode` methods to ensure accurate object comparison and correct behavior in collections.
 - **String Representation:** Evaluated the `toString` method to confirm that it accurately represents `Employee` object details, improving readability for debugging and logging.
 
-Here are some example of the tests implemented:
+Here are some examples of my tests:
+
+```java
+class EmployeeTest {
+    @Test
+    void shouldCreateEmployeeWithAllArgs() {
+        //arrange
+        //act
+        Employee employee = new Employee("Ruben", "Rocha", "Student", 5);
+        //assert
+        assertNotNull(employee);
+    }
+
+  @Test
+  void emptyFirstNameShouldThrowException(){
+    //arrange
+    //act
+    //assert
+    assertThrows(Exception.class, () -> new Employee("","Rocha", "Student", 5));
+  }
+
+  @Test
+  void negativeJobYearsShouldThrowException(){
+    //arrange
+    //act
+    //assert
+    assertThrows(Exception.class, () -> new Employee("Ruben","Rocha", "Student",-1));
+  }
+
+  @Test
+  void shouldReturnTrueIfSameEmployeeAttributes(){
+    //arrange
+    Employee employee = new Employee("Ruben", "Rocha", "Student", 5);
+    Employee employee2 = new Employee("Ruben", "Rocha", "Student", 5);
+    //act
+    boolean result = employee.equals(employee2);
+    //assert
+    assertTrue(result);
+  }
+
+  @Test
+  void shouldReturnSameHashCodeForEqualEmployees() {
+    // arrange
+    Employee employee1 = new Employee("Ruben", "Rocha", "Student", 5);
+    Employee employee2 = new Employee("Ruben", "Rocha", "Student", 5);
+
+    employee1.setId(1L);
+    employee2.setId(1L);
+
+    // act
+    int hashCode1 = employee1.hashCode();
+    int hashCode2 = employee2.hashCode();
+
+    // assert
+    assertEquals(hashCode1, hashCode2);
+  }
+
+  @Test
+  void whenSetWithEmptyFirstNameThrowsException() {
+    //arrange
+    String firstName = "";
+    Employee employee1 = new Employee("Ruben", "Rocha", "Student", 5);
+    //act+assert
+    assertThrows(Exception.class, () -> employee1.setFirstName(firstName));
+  }
+
+  @Test
+  void whenSetWithNegativeJobYearsThrowsException(){
+    //arrange
+    int jobYears = -1;
+    Employee employee1 = new Employee("Ruben", "Rocha", "Student", 5);
+    //act+assert
+    assertThrows(Exception.class, () -> employee1.setJobYears(jobYears));
+  }
+
+  @Test
+  void shouldReturnEmployeeToString(){
+    //arrange
+    Employee employee1 = new Employee("Ruben", "Rocha", "Student", 5, "rubenrocha26@hotmail.com");
+    employee1.setId(1L);
+    //act
+    String result = employee1.toString();
+    // assert
+    String expected = "Employee{id=1, firstName='Ruben', lastName='Rocha', description='Student', jobYears='5'}";
+    assertEquals(expected, result);
+  }   
+}
+```
+
+- `DatabeseLoader.java`
+
+The `DatabaseLoader.java` class, responsible for pre-loading the database with sample data, was modified to include jobYears information for sample employees. 
+This update ensures that the application can demonstrate the functionality of the new field from the very beginning.
+
+Below is a code snippet illustrating the modifications made to `DatabaseLoader` to incorporate jobYears for the sample employees:
+
+```java
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
+
+/**
+ * @author Ruben Rocha
+ */
+// tag::code[]
+@Component // <1>
+public class DatabaseLoader implements CommandLineRunner { // <2>
+
+	private final EmployeeRepository repository;
+
+	@Autowired // <3>
+	public DatabaseLoader(EmployeeRepository repository) {
+		this.repository = repository;
+	}
+
+	@Override
+	public void run(String... strings) throws Exception { // <4>
+		this.repository.save(new Employee("Frodo", "Baggins", "ring bearer", 5));
+		this.repository.save(new Employee("Ruben", "Rocha", "Student", 6));
+	}
+}
+// end::code[]
+```
+
+- `app.js`
+
+The React components within `app.js were updated to support the display of the newly introduced jobYears field in the employee list.
+
+Specifically, the `EmployeeList` and `Employee` components were modified to include a "Job Years" column in the rendered table. This allows users to view the number of years an employee has been with the company alongside their other details.
+
+Below is a code snippet illustrating the modifications made to app.js to integrate the jobYears field into the application's frontend:
+
+```js
+class EmployeeList extends React.Component{
+  render() {
+    const employees = this.props.employees.map(employee =>
+            <Employee key={employee._links.self.href} employee={employee}/>
+    );
+    return (
+            <table>
+              <tbody>
+                <tr>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                  <th>Description</th>
+                  <th>JobYears</th>
+                </tr>
+                {employees}
+              </tbody>
+            </table>
+    )
+  }
+}
+```
+
+```js
+class Employee extends React.Component{
+  render() {
+    return (
+            <tr>
+              <td>{this.props.employee.firstName}</td>
+              <td>{this.props.employee.lastName}</td>
+              <td>{this.props.employee.description}</td>
+              <td>{this.props.employee.jobYears}</td>
+            </tr>
+    )
+  }
+}
+```
+
+5. **Debugging the Server and Client Components**
+
+After verifying the integration of the jobYears field, I ran the application using the command: `./mvnw spring-boot:run`
+
+This allowed me to test its real-time functionality at http://localhost:8080/. 
+This step was essential for hands-on testing within the application's interface, ensuring smooth operation and compatibility with existing features.
+
+To further validate the implementation, I leveraged **React DevTools** to inspect component hierarchies, track state updates, and confirm that the jobYears field was correctly managed within the React components. 
+This tool was particularly useful in debugging data flow issues and ensuring seamless interaction between the frontend and backend.
+
+Simultaneously, I conducted a comprehensive code review to:
+
+- Verify **server-side data handling,** ensuring that the **jobYears** field was correctly processed and stored.
+- Confirm **client-side representation,** making sure that **jobYears** was accurately displayed in the UI and updated dynamically.
+
+By combining real-time testing, **React DevTools**, and meticulous code review, I ensured the correctness of the feature while maintaining high code quality and system reliability.
+
+6. **End of the assignment**
+
+Once I was satisfied with the stability and performance of the new feature, I committed the changes to the repository with a descriptive message outlining the enhancements. 
+After that, I pushed the updated code to the remote repository.
+
+To formally mark this significant update, I tagged the commit as `v1.2.0`, adhering to the semantic versioning pattern established for the project. 
+Additionally, at the conclusion of the assignment, I tagged the repository with `ca1-part1.1`, providing a clear reference point for this specific phase of development.
+
+
 
 ## Part 1.2 Development Using Branches
 
