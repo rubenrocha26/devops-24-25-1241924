@@ -11,10 +11,34 @@ It is divided into multiple parts, each focusing on different aspects of version
   - [Getting Started](#getting-started)
   - [Goals and Requirements](#goals-and-requirements)
   - [Implementation](#implementation)
+    - [1.Copy the code of the Tutorial React.js and Spring Data REST Application into a new folder named `CA1/part1`](#1-copy-the-code-of-the-tutorial-reactjs-and-spring-data-rest-applicationhttpsgithubcomspring-attictut-react-and-spring-data-resttreemainbasic-into-a-new-folder-named-ca1part1)
+    - [2.Commit the changes (and push them)](#2-commit-the-changes-and-push-them)
+    - [3.Tagging the Repository to Mark the Application Version](#3-tagging-the-repository-to-mark-the-application-version)
+    - [4.Developing a New Feature: Adding a New Field to the Application](#4-developing-a-new-feature-adding-a-new-field-to-the-application)
+    - [5.Debugging the Server and Client Components](#5-debugging-the-server-and-client-components)
+    - [6.End of the assignment](#6-end-of-the-assignment)
+---
 
 - [Part 1.2 Development Using Branches](#part-12-development-using-branches)
-  - Goals and Requirements
-  - Implementation
+  - [Goals and Requirements](#goals-and-requirements-1)
+  - [Implementation](#implementation-1)
+    - [1.Verifying the active Branch](#1-verifying-the-active-branch)
+    - [2.Develop new features in branches](#2-develop-new-features-in-branches)
+    - [3.Integration and Testing of the Email Field](#3-integration-and-testing-of-the-email-field)
+    - [4.Merging the Code into the Master Branch](#4-merging-the-code-into-the-master-branch)
+    - [5.Create a new branch to fix a bug](#5-create-a-new-branch-to-fix-a-bug)
+    - [6.End of the assignment](#6-end-of-the-assignment-1)
+---
+
+- [Results](#results)
+  - [Final State of The Application](#final-state-of-the-application)
+  - [Repository Branch Overview](#repository-branch-overview)
+  - [Project Tags Overview](#project-tags-overview)
+  - [Issue Tracking](#issue-tracking)
+    - [The Role of Issues in Project Management](#the-role-of-issues-in-project-management)
+    - [Future Use of Issues](#future-use-of-issues)
+  - [Reflections on the Development Process](#reflections-on-the-development-process)
+---
 
 - [Alternative Solution](#alternative-solution)
   - Comparison of SVN and Git
@@ -23,7 +47,7 @@ It is divided into multiple parts, each focusing on different aspects of version
 - [Conclusion](#conclusion)
 
 
-## Part 1.1 Development Without Branches
+# Part 1.1 Development Without Branches
 
 This part explores the development process without using branches, 
 highlighting the challenges and solutions encountered.
@@ -91,7 +115,7 @@ git push -u origin master
 
 In the initial phase, all development was carried out on the master branch. The process involved:
 
-1. **Copy the code of the [Tutorial React.js and Spring Data REST Application](https://github.com/spring-attic/tut-react-and-spring-data-rest/tree/main/basic) into a new folder named `CA1/part1`**
+### 1. **Copy the code of the [Tutorial React.js and Spring Data REST Application](https://github.com/spring-attic/tut-react-and-spring-data-rest/tree/main/basic) into a new folder named `CA1/part1`**
 
 These commands were used to create a new directory and subdirectory named `CA1/part1`and copy the tutorial director recursively to `CA1/part1`:
 
@@ -100,7 +124,7 @@ mkdir CA1/part1
 cp -r ~/myDevOpsRepo/tutorial ~/myDevOpsRepo/CA1/part1
 ```
 
-2. **Commit the changes (and push them)**
+### 2. **Commit the changes (and push them)**
 
 Once the `CA1/part1` directory was set up with the Tutorial application, I proceeded to create a .gitignore file to prevent some files to be pushed into the central repository.
 After that I commited these changes to the master branch with the following commands:
@@ -111,7 +135,7 @@ git commit -m "ci: add folder CA1/part1 with Tutorial"
 git push
 ```
 
-3. **Tagging the Repository to Mark the Application Version**
+### 3. **Tagging the Repository to Mark the Application Version**
 
 To track the application's version, I followed the versioning pattern specified in the assignment: major.minor.revision. 
 The initial setup was tagged as v1.1.0, and this tag was then pushed to the remote repository using the following commands:
@@ -121,7 +145,7 @@ git tag v1.1.0 -m "Version 1.1.0"
 git push origin v1.1.0
 ```
 
-4. **Developing a New Feature: Adding a New Field to the Application**
+### 4. **Developing a New Feature: Adding a New Field to the Application**
 
 The primary goal of this phase was to introduce a new feature by adding a jobYears field to the application. 
 This field records the number of years an employee has been with the company.
@@ -449,7 +473,7 @@ class Employee extends React.Component{
 }
 ```
 
-5. **Debugging the Server and Client Components**
+### 5. **Debugging the Server and Client Components**
 
 After verifying the integration of the jobYears field, I ran the application using the command: `./mvnw spring-boot:run`
 
@@ -466,7 +490,7 @@ Simultaneously, I conducted a comprehensive code review to:
 
 By combining real-time testing, **React DevTools**, and meticulous code review, I ensured the correctness of the feature while maintaining high code quality and system reliability.
 
-6. **End of the assignment**
+### 6. **End of the assignment**
 
 Once I was satisfied with the stability and performance of the new feature, I committed the changes to the repository with a descriptive message outlining the enhancements. 
 After that, I pushed the updated code to the remote repository.
@@ -475,13 +499,248 @@ To formally mark this significant update, I tagged the commit as `v1.2.0`, adher
 Additionally, at the conclusion of the assignment, I tagged the repository with `ca1-part1.1`, providing a clear reference point for this specific phase of development.
 
 
+# Part 1.2 Development Using Branches
 
-## Part 1.2 Development Using Branches
+The second phase focuses on leveraging branches for feature development and bug fixes, emphasizing isolated development environments and efficient merge strategies.
 
-This part demonstrates the use of branches in development, showcasing the benefits and best practices.
+## Goals and Requirements
 
-## Alternative Solution
+- **Feature Branches:** All new developments and bug fixes must be implemented in dedicated feature branches, ensuring that ongoing changes do not interfere with the main codebase until they are fully tested and ready to be merged.
+
+- **Merge Strategies:** Proper merge techniques should be applied to integrate feature branches seamlessly, maintaining code stability and avoiding conflicts.
+
+- **Version Tagging:** After successful merges, the master branch is tagged to mark new versions of the application, demonstrating effective branch management and structured version control.
+
+This approach enhances collaboration, ensures code integrity, and facilitates smooth feature integration throughout the development process.
+
+
+## Implementation
+
+In the second phase, the focus shifted towards **branch-based development** to enhance the application's features and address existing bugs, ensuring that the master branch remained stable for publishing reliable versions of the **Tutorial React.js and Spring Data REST Application**.
+
+The process for adding new features and fixing bugs follows a similar approach to Part 1.1. 
+To avoid redundancy, I will not include all the code again. 
+However, the key distinction in this phase is the strategic use of branches to maintain a clean and organized development workflow.
+
+**Main Steps:**
+
+### 1. **Verifying the active Branch**
+
+To ensure that I was working in the correct branch—particularly the master branch for publishing stable versions—I utilized the following command:
+```bash
+git branch
+```
+
+This step was essential in the second phase, as it allowed me to confirm my current working branch. In the command output, the active branch is marked with an asterisk (*), providing a clear indication of my development context and helping maintain an organized workflow.
+
+### 2. **Develop new features in branches**
+
+During the development phase of adding an **email field** to the application, effective **branch management** played a crucial role. 
+The process began by creating a dedicated **feature branch**, ensuring that all changes related to this feature were isolated from the main codebase.
+
+To encapsulate all developments related to the **email field feature**, I created a new branch named e**mail-field** and switched to it before starting the implementation. 
+To confirm that I was working in the correct branch, I used the `git branch` command, which helped verify the active development context.
+
+```bash
+git branch email-field
+git checkout email-field
+git branch
+```
+
+This structured approach ensured that all modifications remained contained within the email-field branch until they were fully developed, tested, and ready for integration.
+
+
+### 3. **Integration and Testing of the Email Field**
+
+The process of integrating support for the **email field** and ensuring robust validation closely followed the approach used for the **jobYears** field in Part 1.1. 
+Below are the key steps taken to implement and validate this feature:
+
+- **Code Implementation:**
+
+Following the existing development pattern, I extended the `Employee` class to include an **email field**, along with its corresponding **getter and setter** methods. 
+This required updating the **data models**, **forms**, **and views** to seamlessly integrate the new field across both the frontend and backend.
+
+- **Unit Testing**
+
+To maintain high reliability, I developed comprehensive **unit tests** to verify:
+
+- The correct creation of `Employee` instances with the **email field**.
+- Validation rules enforcing that the **email** attribute cannot be `null` or `empty`, ensuring data integrity.
+
+- **Debugging**
+
+The **server and client** components underwent thorough debugging to identify and resolve any issues resulting from the addition of the **email field**. 
+This step was critical to ensuring **seamless** operation, proper data **handling**, and an **optimal user experience**.
+
+
+### 4. **Merging the Code into the Master Branch**
+
+The completion of the **email field feature** involved a structured process to integrate the changes into the **main branch** and update the application's version.
+
+**Key Steps:**
+
+- **Commit and Push the Feature Branch**
+
+After finalizing the **email-field implementation**, the changes were committed and the branch was pushed to the **remote repository**, preparing it for integration.
+
+- **Merging into the Main Branch**
+
+To ensure a well-maintained commit history, a **no-fast-forward merge** was performed, preserving the development timeline and branch history.
+
+- **Updating the Remote Repository**
+
+Once the merge was complete, the changes were pushed to the remote repository, officially updating the **main branch** with the new feature.
+
+- **Tagging the New Version**
+
+To mark this significant update, a new version tag was created and pushed, maintaining a structured versioning system.
+
+**Commands Used:**
+
+```shell
+# Commit the feature changes
+git add .
+git commit -m "feat: email field added"
+
+# Push the feature branch upstream
+git push --set-upstream origin email-field
+
+# Switch to the main branch and merge changes
+git checkout main
+git merge --no-ff email-field
+
+# Push the merged changes to update the main branch
+git push 
+
+# Tag the new version and push the tag
+git tag v1.3.0 -m "Added email field feature"
+git push origin v1.3.0
+```
+
+By following this structured approach, the **email field** feature was successfully integrated while ensuring version control integrity and maintaining a clear development history.
+
+
+### 5. **Create a new branch to fix a bug**
+
+To address the **email validation bug** in the `Employee` class, a dedicated branch named **fix-invalid-email** was created, following the established workflow for bug fixes. 
+The **development, testing, and merging processes** were carried out in alignment with previous features and fixes, ensuring **code integrity and application stability**.
+
+The core of this bug fix involved enhancing the **Employee** class with validation logic to enforce proper email formatting, specifically ensuring that the email field contains an **"@" sign**. 
+This update prevents invalid email entries and enhances data reliability.
+
+Below is the **validation** logic implemented:
+
+```java
+private boolean isEmailInvalid(String email){
+    if(email==null || email.isEmpty()){
+        return true;
+    }
+    return !email.matches(".*@.*");
+}
+```
+
+By applying this fix within a structured **branch-based development workflow**, the application maintains its robustness while ensuring that only properly formatted emails are accepted.
+
+### 6. **End of the assignment**
+
+After implementing the **email validation fix** and conducting thorough testing to ensure its effectiveness, the changes were successfully merged into the **master branch**.
+
+To reflect this minor but essential improvement, the **application version was updated to v1.3.1**, following semantic versioning conventions. 
+This version increment underscores the **continuous enhancement** of the application's functionality and reliability.
+
+At the conclusion of the assignment, **the repository was tagged with ca1-part1.2**, marking the completion of this development phase and providing a clear reference point for future iterations.
+
+
+# Results
+
+## Final State of the Application
+
+The final state of the application, following the implementation of all new features, is illustrated below:
+
+![finalStateOfTheApplication.png](../../../../../finalStateOfTheApplication.png "Final State of The Application")
+
+In our employee model, the fields **"First Name", "Last Name", and "Description"** were pre-existing components and remained unchanged throughout this project.
+
+During **Part 1.1 of CA1, the "Job Years"** field was introduced to track employees' tenure within the company.
+
+The latest enhancement, implemented in **Part 1.2 of CA1**, involved adding the "Email" field, further enriching the employee data model by incorporating essential contact information.
+
+With these improvements, the application now provides a more comprehensive employee profile, enhancing **data accuracy, usability, and overall functionality**.
+
+
+## Repository Branch Overview
+
+![currentBranches.png](../../../../../currentBranches.png "Branch Overview")
+
+The image above displays the **current branches** within the repository, as revealed by executing the following command:
+
+```bash
+git branch
+```
+
+Additionally, the subsequent image illustrates the **chronological** sequence of branches, highlighting the most recent contributions made to the repository.
+
+![chronologicalSequenceOfBranches.png](../../../../../chronologicalSequenceOfBranches.png "Chronological Branches Sequence")
+
+Through this assignment, I gained valuable insights into the importance of using **branches** to isolate changes related to specific features or fixes. 
+This approach not only ensures the stability of the **main codebase** but also provides a **clear and organized history** of modifications, facilitating better collaboration and version control.
+
+## Project Tags Overview
+
+Below is a visual representation of the project's tags, generated using the following command:
+
+```bash
+git tag
+```
+![projectTagsOverview.png](../../../../../projectTagsOverview.png "Project Tags")
+
+The use of **tags** provided valuable insight into how to mark **significant points** in the project's history. 
+This practice is essential for:
+
+- Tracking project **progress** over time.
+- **Facilitating version control**, ensuring each release or milestone is clearly identifiable.
+- **Enabling quick rollbacks**, allowing developers to revert to previous stable versions when necessary.
+
+By incorporating tags, the project maintains a well-structured and easily navigable **versioning system**, improving overall development workflow and reliability.
+
+## Issue Tracking
+
+Throughout the development process, multiple **GitHub issues** were created to track and manage various tasks, including bug fixes and feature implementations. 
+These issues were systematically **addressed** and **closed** through commits **linked directly** to their respective tasks. 
+This approach not only ensures a **clear history of the project's evolution but also streamlines the workflow by automatically resolving issues when their corresponding changes are merged into the repository**.
+
+Below is a visual **representation** of the issues that were created and successfully resolved during this assignment:
+
+![issueTracking.png](../../../../../issueTracking.png "Issue Tracking")
+
+### The Role of Issues in Project Management
+
+Issues play a crucial role in software development, as they help:
+
+- **Track bugs**, ensuring that problems are identified and resolved efficiently.
+- **Manage feature development**, documenting planned enhancements.
+- **Organize tasks**, keeping development structured and prioritized.
+- **Facilitate collaboration**, allowing tasks to be assigned to team members.
+- **Enhance traceability**, linking issues to specific commits and pull requests.
+
+### Future Use of Issues
+
+In future assignments, the **goal** is to leverage issue tracking throughout the **entire development cycle**, improving task management, progress tracking, and team coordination.
+
+## Reflections on the Development Process
+
+This section provides a **comprehensive overview** of the application's evolution, highlighting:
+
+- The **addition of new features**.
+- The **structured use of branching** for development.
+- The **marking of significant milestones** using tags.
+
+The visual **representations** of the repository’s **branches, tags, and issues** illustrate the **practical application of version control and project management techniques**. 
+By integrating **issue tracking**, the project maintains a well-documented and organized history, ensuring a scalable and efficient **development process**.
+
+
+# Alternative Solution
 
 A comparison between SVN and Git, and an exploration of utilizing SVN for the assignment.
 
-## Conclusion
+# Conclusion

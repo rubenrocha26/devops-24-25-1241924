@@ -19,6 +19,7 @@ Each directory within this repository corresponds to a specific class assignment
     - [Part 1](CA1/part1/basic/README.md)
       - [Part 1.1 Development Without Branches](CA1/part1/basic/README.md#part-11-development-without-branches)
       - [Part 1.2 Development Using Branches](CA1/part1/basic/README.md#part-12-development-using-branches)
+      - [Results](CA1/part1/basic/README.md/#results)
       - [Alternative Solution](CA1/part1/basic/README.md#alternative-solution)
       - [Conclusion](CA1/part1/basic/README.md#conclusion)
 
