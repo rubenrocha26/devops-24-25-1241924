@@ -41,16 +41,22 @@ It is divided into multiple parts, each focusing on different aspects of version
 ---
 
 - [Alternative Solution](#alternative-solution)
-  - Comparison of SVN and Git
-  - Utilizing SVN for the Assignment
+  - [Comparison of Mercurial and Git](#comparison-of-mercurial-and-git)
+  - [Utilizing Mercurial for the Assignment](#utilizing-mercurial-for-the-assignment)
+    - [1.Initial Repository Setup Import](#1-initial-repository-setup-and-import)
+    - [2.Feature Development and Branch Management](#2-feature-development-and-branch-management)
+    - [3.Continuous Integration: Commiting and Tagging](#3-continuous-integration-committing-and-tagging)
+    - [4.Merging Features and Preparing for Deployment](#4-merging-features-and-preparing-for-deployment)
+  - [Final Thoughts on Mercurial as an Alternative](#final-thoughts-on-mercurial-as-an-alternative)
 
-- [Conclusion](#conclusion)
+
+- [Overall Conclusion](#overall-conclusion)
 
 
 # Part 1.1 Development Without Branches
 
 This part explores the development process without using branches, 
-highlighting the challenges and solutions encountered.
+highlighting the challenges faced and solutions implemented.
 
 ## Getting Started
 
@@ -59,7 +65,7 @@ Next, I established my own repository to store class assignments and track all m
 
 **Setting Up My Repository:** I created a dedicated directory on my local machine for the DevOps class assignments and initialized it as a Git repository. This marked the initial step in organizing my project workspace.
 
-```shell
+```bash
 mkdir ~/myDevOpsRepo
 cd ~/myDevOpsRepo
 git init
@@ -69,21 +75,21 @@ git init
 This step guaranteed that all necessary resources were included within my version control setup.
 The tutorial application can be found at: [Tutorial Repository](https://github.com/spring-attic/tut-react-and-spring-data-rest/tree/main/basic)
 
-```shell
+```bash
 cp -r ~/tutorial ~/myDevOpsRepo
 ```
 
 **Connecting to GitHub:** Once the tutorial application was in place, I linked my local repository to a new GitHub repository. 
 This connection enabled me to push updates to a remote server, ensuring both backup and accessibility.
 
-```shell
+```bash
 git remote add origin <repository-URL>
 ```
 
 **Initial Commit:** After setting up the repository and verifying the presence of all files, I staged and committed the README file. 
 This first commit, labeled "add readme," marked the beginning of my work on the assignments. 
 
-```shell
+```bash
 git add .
 git commit -m "add readme"
 ```
@@ -100,9 +106,11 @@ Each commit follows a clear and consistent logic, ensuring better tracking and m
 **Pushing to Remote:** Lastly, I pushed my initial commit to the GitHub repository, officially initiating the version history for my assignments in a remote location.
 
 
-```shell
+```bash
 git push -u origin master
 ```
+
+---
 
 ## Goals and Requirements
 
@@ -110,6 +118,7 @@ git push -u origin master
 - Tasks involve setting up the project environment, making changes directly to the main branch, and committing those modifications.
 - An essential requirement is to add a new feature (e.g., introducing a jobYears field to the Employee object) and ensuring proper version tagging, starting with an initial version and updating it after adding the new feature.
 - The emphasis is on practicing commits, understanding commit history, and using tags for version management.
+
 
 ## Implementation
 
@@ -119,31 +128,37 @@ In the initial phase, all development was carried out on the master branch. The 
 
 These commands were used to create a new directory and subdirectory named `CA1/part1`and copy the tutorial director recursively to `CA1/part1`:
 
-```shell
+```bash
 mkdir CA1/part1
 cp -r ~/myDevOpsRepo/tutorial ~/myDevOpsRepo/CA1/part1
 ```
+
+---
 
 ### 2. **Commit the changes (and push them)**
 
 Once the `CA1/part1` directory was set up with the Tutorial application, I proceeded to create a .gitignore file to prevent some files to be pushed into the central repository.
 After that I commited these changes to the master branch with the following commands:
 
-```shell
+```bash
 git add .
 git commit -m "ci: add folder CA1/part1 with Tutorial"
 git push
 ```
+
+---
 
 ### 3. **Tagging the Repository to Mark the Application Version**
 
 To track the application's version, I followed the versioning pattern specified in the assignment: major.minor.revision. 
 The initial setup was tagged as v1.1.0, and this tag was then pushed to the remote repository using the following commands:
 
-```shell
+```bash
 git tag v1.1.0 -m "Version 1.1.0"
 git push origin v1.1.0
 ```
+
+---
 
 ### 4. **Developing a New Feature: Adding a New Field to the Application**
 
@@ -473,6 +488,8 @@ class Employee extends React.Component{
 }
 ```
 
+---
+
 ### 5. **Debugging the Server and Client Components**
 
 After verifying the integration of the jobYears field, I ran the application using the command: `./mvnw spring-boot:run`
@@ -490,6 +507,8 @@ Simultaneously, I conducted a comprehensive code review to:
 
 By combining real-time testing, **React DevTools**, and meticulous code review, I ensured the correctness of the feature while maintaining high code quality and system reliability.
 
+---
+
 ### 6. **End of the assignment**
 
 Once I was satisfied with the stability and performance of the new feature, I committed the changes to the repository with a descriptive message outlining the enhancements. 
@@ -498,6 +517,7 @@ After that, I pushed the updated code to the remote repository.
 To formally mark this significant update, I tagged the commit as `v1.2.0`, adhering to the semantic versioning pattern established for the project. 
 Additionally, at the conclusion of the assignment, I tagged the repository with `ca1-part1.1`, providing a clear reference point for this specific phase of development.
 
+---
 
 # Part 1.2 Development Using Branches
 
@@ -513,6 +533,7 @@ The second phase focuses on leveraging branches for feature development and bug 
 
 This approach enhances collaboration, ensures code integrity, and facilitates smooth feature integration throughout the development process.
 
+---
 
 ## Implementation
 
@@ -533,6 +554,8 @@ git branch
 
 This step was essential in the second phase, as it allowed me to confirm my current working branch. In the command output, the active branch is marked with an asterisk (*), providing a clear indication of my development context and helping maintain an organized workflow.
 
+---
+
 ### 2. **Develop new features in branches**
 
 During the development phase of adding an **email field** to the application, effective **branch management** played a crucial role. 
@@ -549,6 +572,7 @@ git branch
 
 This structured approach ensured that all modifications remained contained within the email-field branch until they were fully developed, tested, and ready for integration.
 
+---
 
 ### 3. **Integration and Testing of the Email Field**
 
@@ -572,6 +596,7 @@ To maintain high reliability, I developed comprehensive **unit tests** to verify
 The **server and client** components underwent thorough debugging to identify and resolve any issues resulting from the addition of the **email field**. 
 This step was critical to ensuring **seamless** operation, proper data **handling**, and an **optimal user experience**.
 
+---
 
 ### 4. **Merging the Code into the Master Branch**
 
@@ -597,7 +622,7 @@ To mark this significant update, a new version tag was created and pushed, maint
 
 **Commands Used:**
 
-```shell
+```bash
 # Commit the feature changes
 git add .
 git commit -m "feat: email field added"
@@ -619,6 +644,7 @@ git push origin v1.3.0
 
 By following this structured approach, the **email field** feature was successfully integrated while ensuring version control integrity and maintaining a clear development history.
 
+---
 
 ### 5. **Create a new branch to fix a bug**
 
@@ -641,6 +667,8 @@ private boolean isEmailInvalid(String email){
 
 By applying this fix within a structured **branch-based development workflow**, the application maintains its robustness while ensuring that only properly formatted emails are accepted.
 
+---
+
 ### 6. **End of the assignment**
 
 After implementing the **email validation fix** and conducting thorough testing to ensure its effectiveness, the changes were successfully merged into the **master branch**.
@@ -650,6 +678,7 @@ This version increment underscores the **continuous enhancement** of the applica
 
 At the conclusion of the assignment, **the repository was tagged with ca1-part1.2**, marking the completion of this development phase and providing a clear reference point for future iterations.
 
+---
 
 # Results
 
@@ -667,6 +696,7 @@ The latest enhancement, implemented in **Part 1.2 of CA1**, involved adding the 
 
 With these improvements, the application now provides a more comprehensive employee profile, enhancing **data accuracy, usability, and overall functionality**.
 
+---
 
 ## Repository Branch Overview
 
@@ -684,6 +714,8 @@ Additionally, the subsequent image illustrates the **chronological** sequence of
 
 Through this assignment, I gained valuable insights into the importance of using **branches** to isolate changes related to specific features or fixes. 
 This approach not only ensures the stability of the **main codebase** but also provides a **clear and organized history** of modifications, facilitating better collaboration and version control.
+
+---
 
 ## Project Tags Overview
 
@@ -703,6 +735,8 @@ This practice is essential for:
 
 By incorporating tags, the project maintains a well-structured and easily navigable **versioning system**, improving overall development workflow and reliability.
 
+---
+
 ## Issue Tracking
 
 Throughout the development process, multiple **GitHub issues** were created to track and manage various tasks, including bug fixes and feature implementations. 
@@ -712,6 +746,8 @@ This approach not only ensures a **clear history of the project's evolution but 
 Below is a visual **representation** of the issues that were created and successfully resolved during this assignment:
 
 ![issueTracking.png](../../../../../issueTracking.png "Issue Tracking")
+
+---
 
 ### The Role of Issues in Project Management
 
@@ -723,9 +759,13 @@ Issues play a crucial role in software development, as they help:
 - **Facilitate collaboration**, allowing tasks to be assigned to team members.
 - **Enhance traceability**, linking issues to specific commits and pull requests.
 
+---
+
 ### Future Use of Issues
 
 In future assignments, the **goal** is to leverage issue tracking throughout the **entire development cycle**, improving task management, progress tracking, and team coordination.
+
+---
 
 ## Reflections on the Development Process
 
@@ -738,9 +778,114 @@ This section provides a **comprehensive overview** of the application's evolutio
 The visual **representations** of the repository’s **branches, tags, and issues** illustrate the **practical application of version control and project management techniques**. 
 By integrating **issue tracking**, the project maintains a well-documented and organized history, ensuring a scalable and efficient **development process**.
 
+---
 
-# Alternative Solution
+# Alternative Solution 
 
-A comparison between SVN and Git, and an exploration of utilizing SVN for the assignment.
+## Comparison of Mercurial and Git
 
-# Conclusion
+| **Feature**          | **Mercurial (Hg)**                                     | **Git**                                          |
+|----------------------|------------------------------------------------------|--------------------------------------------------|
+| **Architecture**     | Distributed model, where each developer has a full copy of the repository. | Distributed architecture, enabling multiple full-version repositories for enhanced redundancy and collaboration. |
+| **Versioning Model** | Uses a changeset-based approach, recording each commit as a unique identifier, ensuring full traceability. | Adopts a snapshot-based approach, encapsulating the state of the entire repository at each commit for comprehensive tracking. |
+| **Branching and Merging** | Provides lightweight branching and intuitive merging capabilities, with built-in features like named branches and bookmarks. | Offers efficient branching and merging capabilities, ideal for parallel development workflows. |
+| **Binary Files Handling** | Handles binary files efficiently through revlogs, reducing storage impact and optimizing performance. | Stores complete binary files per change, which may increase repository size but ensures ease of access to all versions. |
+
+---
+
+## Utilizing Mercurial for the Assignment
+
+The following sections describe how **Mercurial** could be used to accomplish the same tasks outlined in this assignment.
+
+### 1. Initial Repository Setup and Import
+The first step involves creating a **distributed Mercurial repository** to store the **Tutorial React.js and Spring Data REST application**, ensuring full version control across all development environments.
+
+```bash
+# Initialize a new Mercurial repository
+hg init /path/to/hg_repository
+
+# Add all project files to the repository
+cd /path/to/TutorialReactSpringDataREST
+hg add
+
+# Commit the initial version
+hg commit -m "Initial import of the project"
+```
+
+---
+
+### 2. Feature Development and Branch Management
+Similar to Git, Mercurial supports **branching strategies** to keep feature development isolated. However, Mercurial offers two primary methods for branching: **named branches** (persistent) and **bookmarks** (similar to Git branches).
+
+```bash
+# Create and switch to a new feature branch
+hg branch email-field
+hg commit -m "Created email-field branch for feature development"
+```
+
+Alternatively, bookmarks can be used for a **lighter** branching approach:
+
+```bash
+hg bookmark email-field
+hg update email-field
+```
+
+---
+
+### 3. Continuous Integration: Committing and Tagging
+Throughout development, commits are made to track progress. Once a stable version is reached, it is **tagged** to mark important milestones.
+
+```bash
+# Commit feature changes
+hg commit -m "Implemented email field feature"
+
+# Tag a stable release version
+hg tag v1.0
+hg commit -m "Tagging version 1.0"
+```
+
+---
+
+### 4. Merging Features and Preparing for Deployment
+After testing, the feature branch is merged back into the main branch (`default` in Mercurial).
+
+```bash
+# Switch to the main branch
+hg update default
+
+# Merge feature branch
+hg merge email-field
+hg commit -m "Merged email field feature into default branch"
+```
+
+Finally, the changes are pushed to the **remote repository** to synchronize development.
+
+```bash
+hg push
+```
+
+---
+
+## Final Thoughts on Mercurial as an Alternative
+
+By adapting **Mercurial** to the workflow used in this assignment, a development approach similar to **Git** can be achieved. Mercurial’s **simplicity, built-in branching mechanisms, and robust version tracking** make it a strong alternative for version control, ensuring an organized and reliable software development environment.
+
+---
+
+# Overall Conclusion
+
+Completing the **Version Control with Git** assignment has significantly broadened my understanding of **version control systems** and their role in **software development**.
+
+**Part 1.1** of the assignment reinforced the foundational concepts of version control, focusing on **direct modifications to the master branch**, along with the essential practices of **committing and tagging**. 
+The transition to **Part 1.2**, which introduced **branching**, provided a deeper exploration of more complex scenarios, such as **feature additions and bug fixes**. 
+This progression highlighted the importance of **isolating changes**, ensuring a **clearer project history** and **easier management**.
+
+The **Results** section encapsulates the tangible outcomes of this learning experience, showcasing the application's enhanced functionality through the **successive addition of new features**. 
+This visual portrayal underscores the **practical application of version control principles** in real-world software development scenarios.
+
+The use of **GitHub issues** for **problem tracking and management** was also introduced and effectively utilized, offering a **clear history of issues and their solutions**. 
+This practice demonstrated the **versatility and applicability** of issues in software development projects, reinforcing structured workflows.
+
+Additionally, the exploration of **Mercurial as an Alternative Solution** to Git provided insights into different **version control paradigms**.
+
+This assignment not only strengthened my **technical skills** in using **Git** and understanding **Mercurial**, but also underscored the **essential role of version control** in facilitating **collaborative development environments**, ensuring **code integrity**, and efficiently **managing project evolution**.
