@@ -11,7 +11,6 @@
 .idea/**/usage.statistics.xml
 .idea/**/dictionaries
 .idea/**/shelf
-.idea/
 
 # AWS User-specific
 .idea/**/aws.xml
@@ -456,3 +455,6 @@ gradle-app.setting
 # Java heap dump
 
 # End of https://www.toptal.com/developers/gitignore/api/java,react,reactnative,intellij,maven,gradle,macos
+
+###Prevents backup folder to go to remote repository
+CA1/part2/gradle-basic/backup/
