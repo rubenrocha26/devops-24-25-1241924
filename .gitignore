@@ -457,4 +457,4 @@ gradle-app.setting
 # End of https://www.toptal.com/developers/gitignore/api/java,react,reactnative,intellij,maven,gradle,macos
 
 ###Prevents backup folder to go to remote repository
-CA1/part2/gradle-basic/backup/
+CA1/part2/gradle-basic/backup
