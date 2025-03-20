@@ -2,7 +2,7 @@
 
 ## Introduction to Part 1
 
-This section of the repository corresponds to the part 1 of the first class assignment (CA1) of the DevOps course in the Switch 24-25 program. 
+**This section of the repository corresponds to the part 1 of the first class assignment (CA1) of the DevOps course in the Switch 24-25 program.** 
 It is divided into multiple parts, each focusing on different aspects of version control and development practices.
 
 ## Table of Contents
