@@ -33,8 +33,14 @@ frontend {
 	cleanScript = "run clean"
 	checkScript = "run check"
 }
-
-
-tasks.named('test') {
-	useJUnitPlatform()
+task copyJar(type: Copy) {
+	dependsOn bootJar
+	from bootJar.outputs
+	into file("dist")
 }
+
+task cleanWebpack(type: Delete) {
+	delete 'src/main/resources/static/built'
+}
+
+clean.dependsOn cleanWebpack
