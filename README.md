@@ -71,11 +71,11 @@ npm -v
 
 ## Getting Started
 
-1. **Clone the repository:**
-   ```sh
-   git clone https://github.com/rubenrocha26/devops-24-25-1241924
-   cd devops-24-25-1241924
-   ```
+**Clone the repository:**
+```sh
+git clone https://github.com/rubenrocha26/devops-24-25-1241924
+cd devops-24-25-1241924
+```
    
 ## Contact
 
