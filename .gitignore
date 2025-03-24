@@ -458,3 +458,6 @@ gradle-app.setting
 
 ###Prevents backup folder to go to remote repository
 CA1/part2/gradle-basic/backup
+
+###Prevents frontend plugin to go
+CA1/part3/react-and-spring-data-rest-basic/.frontend-gradle-plugin
