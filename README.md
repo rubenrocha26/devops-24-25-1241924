@@ -1,6 +1,6 @@
 # _DevOps Switch 24-25_
 
-#### This project corresponds to Switch 24-25, DevOps course and is divided into class assignments. Check Table of Contentes below.
+#### This project corresponds to Switch 24-25, DevOps course and is divided into class assignments. Check the Table of Contentes below.
 
 Created by [Ruben Rocha](https://github.com/rubenrocha26)
 
@@ -38,8 +38,8 @@ Each directory within this repository corresponds to a specific class assignment
       - [Steps to Resolve Compilation Errors](CA1/part3/react-and-spring-data-rest-basic/README.md#steps-to-resolve-compilation-errors)
       - [Configure Frontend Plugin for Gradle](CA1/part3/react-and-spring-data-rest-basic/README.md#configure-frontend-plugin-for-gradle)
       - [Gradle Tasks for File Management](CA1/part3/react-and-spring-data-rest-basic/README.md#gradle-tasks-for-file-management)
-      - [Alternative Solution](CA1/part3/react-and-spring-data-rest-basic/README.md#)
-      - [Conclusion](CA1/part3/react-and-spring-data-rest-basic/README.md#)
+      - [Alternative Solution](CA1/part3/react-and-spring-data-rest-basic/README.md#alternative-solution)
+      - [Conclusion](CA1/part3/react-and-spring-data-rest-basic/README.md#conclusion)
 
 ## Technologies Used
 
@@ -49,7 +49,7 @@ This project utilizes various technologies to support **DevOps workflows** and *
 * [![Spring][Spring-shield]][Spring-url]
 * ![JavaScript][JavaScript-shield]
 * [![React][React.js]][React-url]
-* [Maven][Maven-url]
+* [![Maven][Maven-shield]][Maven-url]
 * [![Gradle][Gradle-shield]][Gradle-url]
 
 Each assignment integrates these technologies to **enhance automation, scalability, and software quality**.
@@ -82,6 +82,12 @@ npm -v
 git clone https://github.com/rubenrocha26/devops-24-25-1241924
 cd devops-24-25-1241924
 ```
+
+## Project Status
+
+✅ Ongoing – updated weekly with new assignments
+📅 Last updated: March 2025
+
    
 ## Contact
 
@@ -103,6 +109,7 @@ For any questions or collaborations, feel free to reach out:
 [Spring-url]:https://spring.io/
 [JavaScript-shield]: https://img.shields.io/badge/JavaScript-323330?style=flat&logo=javascript&logoColor=F7DF1E
 [Maven-url]: https://maven.apache.org/
+[Maven-shield]: https://img.shields.io/badge/Maven-grey?style=flat&logo=apachemaven&logoColor=white
 [Gradle-shield]: https://img.shields.io/badge/Gradle-02303A.svg?logo=Gradle&logoColor=white
 [Gradle-url]: https://gradle.org/
 

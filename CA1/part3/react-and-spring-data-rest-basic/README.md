@@ -39,6 +39,13 @@ This part reinforces prior Gradle experience and deepens the understanding of ho
   - [Task: copyJar](#task-copyjar)
   - [Task: cleanWebpack](#task-cleanwebpack)
 - [Alternative Solution](#alternative-solution)
+  - [Implementing the Assignment Goals with Maven](#implementing-the-assignment-goals-with-maven)
+  - [Project Setup](#project-setup)
+  - [Frontend Integration](#frontend-integration)
+  - [Copy Jar to Distribution Folder](#copy-jar-to-distribution-folder)
+  - [Delete Webpack-Generated Files](#delete-webpack-generated-files)
+  - [Maven vs Gradle Comparison](#maven-vs-gradle-comparison)
+  - [Final Remarks](#final-remarks)
 - [Conclusion](#conclusion)
 
 ---
@@ -254,7 +261,7 @@ clean.dependsOn cleanWebpack
 ```
 
 **Dependencies:**
-This task is configured to automatically run before the standard Gradle `clean task, integrating it into the regular cleanup process.
+This task is configured to automatically run before the standard Gradle `clean task`, integrating it into the regular cleanup process.
 
 ### Verification of Task Functionality
 
@@ -286,4 +293,188 @@ This confirms that the cleanup task functions as intended, ensuring that the bui
 These tasks have been seamlessly integrated into the build process to automate file management. 
 Their proper execution enhances the overall efficiency and reliability of both the build and deployment processes, contributing to streamlined project maintenance and management.
 
+---
+
 ## Alternative Solution
+
+### Implementing the Assignment Goals with Maven
+
+To demonstrate flexibility in build automation tools, this section outlines an alternative approach using **Maven** instead of **Gradle**. 
+The goal is to replicate the same project structure and functionality, including backend configuration, frontend integration, and file management.
+
+This serves as a comparison and fallback option for environments or teams where Maven is the preferred build system.
+
+### Project Setup
+
+A `pom.xml` file was created for the Spring Boot application, including the necessary dependencies to match the setup previously defined with Gradle. These include support for:
+
+- Spring Web (REST Repositories)
+- Thymeleaf
+- Spring Data JPA
+- H2 Database
+
+Below is a snippet from the `pom.xml` showing the core dependencies:
+
+```xml
+<dependencies>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-data-jpa</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-thymeleaf</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>com.h2database</groupId>
+        <artifactId>h2</artifactId>
+        <scope>runtime</scope>
+    </dependency>
+</dependencies>
+```
+
+### Frontend Integration
+
+To manage frontend dependencies and build tasks, the `frontend-maven-plugin` was configured to handle the installation of `Node.js`, npm packages, and the execution of Webpack build scripts:
+
+```xml
+<plugin>
+    <groupId>com.github.eirslett</groupId>
+    <artifactId>frontend-maven-plugin</artifactId>
+    <version>1.11.0</version>
+    <configuration>
+        <nodeVersion>v16.20.2</nodeVersion>
+        <workingDirectory>src/main/resources/static</workingDirectory>
+    </configuration>
+    <executions>
+        <execution>
+            <id>install node and npm</id>
+            <goals>
+                <goal>install-node-and-npm</goal>
+            </goals>
+        </execution>
+        <execution>
+            <id>npm install</id>
+            <goals>
+                <goal>npm</goal>
+            </goals>
+            <configuration>
+                <arguments>install</arguments>
+            </configuration>
+        </execution>
+        <execution>
+            <id>npm run build</id>
+            <goals>
+                <goal>npm</goal>
+            </goals>
+            <configuration>
+                <arguments>run build</arguments>
+            </configuration>
+        </execution>
+    </executions>
+</plugin>
+```
+
+This configuration ensures that frontend assets are built during the Maven build process and aligned with the backend lifecycle.
+
+### Copy JAR to Distribution Folder
+
+To replicate the `copyJar` functionality from Gradle, the `maven-resources-plugin` was used to copy the final JAR to a `dist/` directory after packaging:
+
+```xml
+<plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-resources-plugin</artifactId>
+    <version>3.2.0</version>
+    <executions>
+        <execution>
+            <id>copy-jar</id>
+            <phase>package</phase>
+            <goals>
+                <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+                <outputDirectory>${project.build.directory}/dist</outputDirectory>
+                <resources>
+                    <resource>
+                        <directory>${project.build.directory}</directory>
+                        <includes>
+                            <include>*.jar</include>
+                        </includes>
+                    </resource>
+                </resources>
+            </configuration>
+        </execution>
+    </executions>
+</plugin>
+```
+
+### Delete Webpack-Generated Files
+
+To delete the files generated by Webpack (in `static/built/`), the `maven-clean-plugin was configured as follows:
+
+```xml
+<plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-clean-plugin</artifactId>
+    <version>3.1.0</version>
+    <executions>
+        <execution>
+            <id>delete-webpack-files</id>
+            <phase>clean</phase>
+            <goals>
+                <goal>clean</goal>
+            </goals>
+            <configuration>
+                <filesets>
+                    <fileset>
+                        <directory>src/main/resources/static/built</directory>
+                        <includes>
+                            <include>*</include>
+                        </includes>
+                    </fileset>
+                </filesets>
+            </configuration>
+        </execution>
+    </executions>
+</plugin>
+```
+
+This ensures a clean build environment, similar to the cleanWebpack task in Gradle.
+
+### Maven vs Gradle Comparison
+
+| Feature                 | Maven                                              | Gradle                                                     |
+|-------------------------|----------------------------------------------------|-------------------------------------------------------------|
+| **Build Language**      | XML-based configuration                            | Groovy or Kotlin DSL-based configuration                    |
+| **Performance**         | Slower due to linear build phases                  | Faster with support for incremental and parallel builds     |
+| **Flexibility**         | Less flexible, relies on a rigid lifecycle         | Highly customizable through scripting                       |
+| **Dependency Management** | Uses a centralized repository model             | Supports dynamic versions and rich dependency management    |
+| **Ease of Use**         | Simple to set up with a standardized structure     | Steeper learning curve but more powerful                    |
+| **Plugin Ecosystem**    | Mature, but plugins may require verbose setup      | Extensive and easier to extend or customize                 |
+| **Community Support**   | Large and well-established                         | Growing community with strong documentation                 |
+| **Best Use Case**       | Ideal for conventional Java applications           | Ideal for complex, multi-module, or full-stack projects     |
+
+
+### Final Remarks
+
+Maven has been demonstrated as a viable alternative to Gradle for managing a full-stack Spring Boot project.  
+With structured lifecycle phases, a mature plugin ecosystem, and wide adoption in the Java community, Maven remains a dependable tool — particularly for teams that prioritize **convention over configuration**.
+
+While it lacks some of Gradle's performance optimizations and scripting flexibility, Maven's **predictability**, **simplicity**, and **extensive community support** make it a strong candidate for building stable and maintainable enterprise applications.
+
+Ultimately, the choice between Maven and Gradle should be guided by the **project’s complexity**, **team preferences**, and **required flexibility** in the build process.
+
+---
+
+## Conclusion
+
+This technical report has detailed the transition of a Spring Boot application from **Maven** to **Gradle**, highlighting Gradle’s robust capabilities in **dependency management**, **frontend integration**, and **custom build task automation**.
+Through the comparison with Maven, we explored how each tool caters to different project needs—emphasizing Maven’s structured and conventional approach versus Gradle’s flexibility in dynamic and scriptable environments.
+This experience has significantly improved my practical understanding of build automation tools and reinforced the importance of selecting the right tool based on **project complexity**, **team expertise**, and **long-term maintainability**.
+The insights gained from this assignment will serve as a valuable foundation for future decisions in software development projects, ensuring more **efficient**, **scalable**, and **well-structured** build processes.
+
