@@ -27,13 +27,13 @@ Each directory within this repository corresponds to a specific class assignment
       - [Alternative Solution](CA1/part1/basic/README.md#alternative-solution-)
       - [Overall Conclusion](CA1/part1/basic/README.md#overall-conclusion)
 
-    - [Part 2](CA1/part2/gradle-basic/README.md)
+    - [Part 2 Build Tools With Gradle](CA1/part2/gradle-basic/README.md)
       - [Environment Setup](CA1/part2/gradle-basic/README.md#environment-setup)
       - [Gradle Basic Demo](CA1/part2/gradle-basic/README.md#gradle-basic-demo)
       - [Implementation](CA1/part2/gradle-basic/README.md#implementation)
       - [Conclusion](CA1/part2/gradle-basic/README.md#conclusion)
 
-    - [Part 3](#part-3)
+    - [Part 3 Full Gradle Migration](CA1/part3/react-and-spring-data-rest-basic/README.md)
 
 ## Technologies Used
 
