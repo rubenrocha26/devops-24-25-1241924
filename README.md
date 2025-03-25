@@ -34,6 +34,12 @@ Each directory within this repository corresponds to a specific class assignment
       - [Conclusion](CA1/part2/gradle-basic/README.md#conclusion)
 
     - [Part 3 Full Gradle Migration](CA1/part3/react-and-spring-data-rest-basic/README.md)
+      - [Integrate Existing Code](CA1/part3/react-and-spring-data-rest-basic/README.md#integrate-existing-code)
+      - [Steps to Resolve Compilation Errors](CA1/part3/react-and-spring-data-rest-basic/README.md#steps-to-resolve-compilation-errors)
+      - [Configure Frontend Plugin for Gradle](CA1/part3/react-and-spring-data-rest-basic/README.md#configure-frontend-plugin-for-gradle)
+      - [Gradle Tasks for File Management](CA1/part3/react-and-spring-data-rest-basic/README.md#gradle-tasks-for-file-management)
+      - [Alternative Solution](CA1/part3/react-and-spring-data-rest-basic/README.md#)
+      - [Conclusion](CA1/part3/react-and-spring-data-rest-basic/README.md#)
 
 ## Technologies Used
 
