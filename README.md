@@ -40,6 +40,16 @@ Each directory within this repository corresponds to a specific class assignment
       - [Gradle Tasks for File Management](CA1/part3/react-and-spring-data-rest-basic/README.md#gradle-tasks-for-file-management)
       - [Alternative Solution](CA1/part3/react-and-spring-data-rest-basic/README.md#alternative-solution)
       - [Conclusion](CA1/part3/react-and-spring-data-rest-basic/README.md#conclusion)
+- [CA2](CA2)
+  - [Part 1](CA2/part1/README.md)
+    - [Virtual Machine Setup - For MAcBook Apple Silicon](CA2/part1/README.md#virtual-machine-setup--macos-apple-silicon)
+    - [Network and Services Configuration — UTM on macOS](CA2/part1/README.md#network-and-services-configuration--utm-on-macos)
+    - [Clone the Repository](CA2/part1/README.md#clone-the-repository)
+    - [Development Environment Setup](CA2/part1/README.md#development-environment-setup)
+    - [Running the Spring Boot Basic Project](CA2/part1/README.md#running-the-spring-boot-basic-project)
+    - [Running the Gradle_basic_Demo_Project](CA2/part1/README.md#running-the-gradle-basic-demo-project-)
+    - [Running the Gradle Spring Boot Basic Project](CA2/part1/README.md#running-the-gradle-spring-boot-basic-project)
+    - [Conclusion](CA2/part1/README.md#conclusion)
 
 ## Technologies Used
 
