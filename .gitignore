@@ -464,3 +464,6 @@ CA1/part3/react-and-spring-data-rest-basic/.frontend-gradle-plugin
 
 ###Prevents node directory to go to remote repo
 CA1/part3/react-and-spring-data-rest-basic/node
+
+.vagrant/
+*.war
