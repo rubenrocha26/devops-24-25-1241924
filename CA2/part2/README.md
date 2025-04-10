@@ -11,6 +11,10 @@ The assignment required setting up a virtualized environment using Vagrant to ru
 - [Configuring Spring Boot for H2 Database Connectivity](#configuring-spring-boot-for-h2-database-connectivity)
 - [Executing the Project within the Virtualized Environment](#executing-the-project-within-the-virtualized-environment)
 - [Key Vagrant Commands Utilized](#key-vagrant-commands-utilized)
+- [Alternative Solution](#alternative-solution)
+  - [Comparison between QEMU and VMware Fusion](#comparison-between-qemu-and-vmware-fusion)
+  - [Using VMware Fusion with Vagrant](#using-vmware-fusion-with-vagrant)
+- [Conclusion](#conclusion)
 ---
 
 ## Environment Setup
@@ -242,3 +246,71 @@ The following table outlines the primary Vagrant commands employed throughout th
 These commands proved instrumental in effectively managing and interacting with the virtualized environments provisioned by Vagrant and QEMU on macOS.
 
 ---
+
+## Alternative Solution
+
+In this section, we explore the use of **VMware Fusion** as an alternative to **QEMU** on macOS for running Spring Boot applications with an H2 database using Vagrant. 
+Below is a comparison between the two solutions, highlighting the pros and cons of each, and a guide to set up the environment with VMware Fusion.
+
+### Comparison between QEMU and VMware Fusion
+
+| Criteria                        | QEMU                                               | VMware Fusion                                        |
+|--------------------------------|----------------------------------------------------|------------------------------------------------------|
+| **License**                    | Free and open-source                              | Commercial license (free personal version available) |
+| **Performance**                | Good performance with manual tuning               | High performance with automatic optimizations        |
+| **Ease of use**                | Requires detailed configuration                   | Intuitive graphical interface                        |
+| **Integration with Vagrant**   | Requires `vagrant-qemu` plugin                    | Official support via `vagrant-vmware-desktop`        |
+| **ARM Support (Apple Silicon)**| Compatible (natively supports ARM)                | Limited support (only ARM Linux)                     |
+| **Snapshots and Cloning**      | Supported via command line                        | Advanced and simplified support                      |
+| **Updates and Support**        | Active community, no official support             | Professional commercial support                      |
+
+### Using VMware Fusion with Vagrant
+
+The integration between Vagrant and VMware Fusion is stable and optimized for performance. Here are the main steps to configure your environment using this setup:
+
+1. **Install VMware Fusion**  
+   Download the appropriate version (Intel or Apple Silicon) from the [official VMware website](https://www.vmware.com/products/fusion.html).
+
+2. **Install VMware Utility for Vagrant**
+
+```bash
+curl -O https://releases.hashicorp.com/vagrant-vmware-utility/1.0.14/vagrant-vmware-utility_1.0.14_x86_64.dmg
+sudo installer -pkg vagrant-vmware-utility_1.0.14_x86_64.dmg -target /
+```
+
+3. **Install the VMware Desktop plugin for Vagrant**
+
+```bash
+vagrant plugin install vagrant-vmware-desktop
+```
+
+4. **Configure your `Vagrantfile`**
+
+```ruby
+Vagrant.configure("2") do |config|
+ config.vm.box = "bento/ubuntu-20.04"
+ config.vm.provider "vmware_desktop" do |v|
+   v.vmx["memsize"] = "2048"
+   v.vmx["numvcpus"] = "2"
+ end
+end
+```
+
+### Notes for Apple Silicon (M1/M2/M3)
+
+Although VMware Fusion introduced early support for Apple Silicon, there are still significant limitations:
+
+- Only ARM64 operating systems are supported (e.g., Ubuntu ARM).
+- It is not possible to run virtual machines with Windows or other x86 distributions.
+- The `vagrant-vmware-desktop` plugin is not officially compatible with Apple Silicon yet.
+
+For these reasons, **QEMU remains the most viable alternative on Apple Silicon Macs**, due to its native ARM compatibility, active community, and stability for modern development environments.
+
+---
+
+## Conclusion
+
+This technical report has presented a comprehensive overview of the setup and execution process for Class Assignment 2 – Part 2, with a focus on virtualization through Vagrant. 
+By successfully configuring the virtual environment, integrating the Spring Boot application with the H2 database, and executing the project, the practical application of core virtualization principles has been effectively demonstrated. 
+Furthermore, the report has examined an alternative solution using VMware Fusion in conjunction with Vagrant, providing a comparative perspective on virtualization tools. 
+This exploration underscores the trade-offs and potential advantages of employing more advanced virtualization platforms in development workflows.

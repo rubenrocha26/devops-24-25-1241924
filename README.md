@@ -50,6 +50,14 @@ Each directory within this repository corresponds to a specific class assignment
     - [Running the Gradle_basic_Demo_Project](CA2/part1/README.md#running-the-gradle-basic-demo-project-)
     - [Running the Gradle Spring Boot Basic Project](CA2/part1/README.md#running-the-gradle-spring-boot-basic-project)
     - [Conclusion](CA2/part1/README.md#conclusion)
+  - [Part2](CA2/part2/README.md)
+    - [Environment Setup](CA2/part2/README.md#environment-setup)
+    - [Modification of the Vagrantfile for QEMU Compatibility](CA2/part2/README.md#modification-of-the-vagrantfile-for-qemu-compatibility)
+    - [Configuring Spring Boot for H2 Database Connectivity](CA2/part2/README.md#configuring-spring-boot-for-h2-database-connectivity)
+    - [Executing the Project within the Virtualized Environment](CA2/part2/README.md#executing-the-project-within-the-virtualized-environment)
+    - [Key Vagrant Commands Utilized](CA2/part2/README.md#key-vagrant-commands-utilized)
+    - [Alternative Solution](CA2/part2/README.md#alternative-solution)
+    - [Conclusion](CA2/part2/README.md#conclusion)
 
 ## Technologies Used
 
@@ -61,6 +69,9 @@ This project utilizes various technologies to support **DevOps workflows** and *
 * [![React][React.js]][React-url]
 * [![Maven][Maven-shield]][Maven-url]
 * [![Gradle][Gradle-shield]][Gradle-url]
+* [![UTM][UTM-shield]][UTM-url]
+* [![Vagrant][Vagrant-shield]][Vagrant-url]
+* [![QEMU][QEMU-shield]][QEMU-url]
 
 Each assignment integrates these technologies to **enhance automation, scalability, and software quality**.
 
@@ -75,6 +86,8 @@ Ensure that the following dependencies are installed before running the project:
 | **Maven**  | 3.6.0 or higher      | Dependency and build management |
 | **Node.js** | 14 or higher         | Frontend environment |
 | **npm**    | 6 or higher          | Frontend package manager |
+| **Vagrant** | Latest stable        | Virtual environment management |
+| **QEMU** | Latest stable        | Virtualization platform        |
 
 🔹 **To verify installed versions, run:**
 
@@ -83,6 +96,8 @@ java -version
 mvn -version
 node -v
 npm -v
+vagrant --version
+qemu-system-x86_64 --version # Or relevant QEMU binary
 ```
 
 ## Getting Started
@@ -122,4 +137,10 @@ For any questions or collaborations, feel free to reach out:
 [Maven-shield]: https://img.shields.io/badge/Maven-grey?style=flat&logo=apachemaven&logoColor=white
 [Gradle-shield]: https://img.shields.io/badge/Gradle-02303A.svg?logo=Gradle&logoColor=white
 [Gradle-url]: https://gradle.org/
+[UTM-shield]: https://img.shields.io/badge/UTM-5E72E4?style=flat&logo=utmapp&logoColor=white
+[UTM-url]: https://mac.getutm.app/
+[Vagrant-shield]: https://img.shields.io/badge/Vagrant-4285F4?style=flat&logo=vagrant&logoColor=white
+[Vagrant-url]: https://www.vagrantup.com/
+[QEMU-shield]: https://img.shields.io/badge/QEMU-3498DB?style=flat&logo=qemu&logoColor=white
+[QEMU-url]: https://www.qemu.org/
 
