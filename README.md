@@ -58,6 +58,10 @@ Each directory within this repository corresponds to a specific class assignment
     - [Key Vagrant Commands Utilized](CA2/part2/README.md#key-vagrant-commands-utilized)
     - [Alternative Solution](CA2/part2/README.md#alternative-solution)
     - [Conclusion](CA2/part2/README.md#conclusion)
+  - [Part 3](CA2/part3/README.md)
+    - [Environment Setup](CA2/part3/README.md#environment-setup)
+    - [Version1 - DockerFile](CA2/part3/README.md#version1---dockerfile)
+    - [Version2 - DockerFile]
 
 ## Technologies Used
 

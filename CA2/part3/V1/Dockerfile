@@ -8,7 +8,7 @@
  RUN git clone https://bitbucket.org/pssmatos/gradle_basic_demo.git
 
  # Set the working directory to the cloned repository
- WORKDIR /CA2/Part1/V1/gradle_basic_demo
+ WORKDIR /CA2/Part3/V1/gradle_basic_demo
 
  # Ensure the Gradle wrapper has the correct permissions
  RUN chmod +x gradlew
@@ -23,7 +23,7 @@
  WORKDIR /app
 
  # Copy the built JAR file from the builder stage
- COPY --from=builder /CA2/Part1/V1/gradle_basic_demo/build/libs/basic_demo-0.1.0.jar /app/basic_demo-0.1.0.jar
+ COPY --from=builder /CA2/Part3/V1/gradle_basic_demo/build/libs/basic_demo-0.1.0.jar /app/basic_demo-0.1.0.jar
 
  # Expose the port the server will run on
  EXPOSE 59001
