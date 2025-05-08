@@ -61,7 +61,8 @@ Each directory within this repository corresponds to a specific class assignment
   - [Part 3](CA2/part3/README.md)
     - [Environment Setup](CA2/part3/README.md#environment-setup)
     - [Version1 - DockerFile](CA2/part3/README.md#version1---dockerfile)
-    - [Version2 - DockerFile]
+    - [Version2 - DockerFile](CA2/part3/README.md#version2---dockerfile)
+    - [Conclusion](CA2/part3/README.md#conclusion)
 
 ## Technologies Used
 
