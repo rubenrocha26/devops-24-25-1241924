@@ -40,6 +40,7 @@ Each directory within this repository corresponds to a specific class assignment
       - [Gradle Tasks for File Management](CA1/part3/react-and-spring-data-rest-basic/README.md#gradle-tasks-for-file-management)
       - [Alternative Solution](CA1/part3/react-and-spring-data-rest-basic/README.md#alternative-solution)
       - [Conclusion](CA1/part3/react-and-spring-data-rest-basic/README.md#conclusion)
+
 - [CA2](CA2)
   - [Part 1](CA2/part1/README.md)
     - [Virtual Machine Setup - For MAcBook Apple Silicon](CA2/part1/README.md#virtual-machine-setup--macos-apple-silicon)
@@ -50,6 +51,7 @@ Each directory within this repository corresponds to a specific class assignment
     - [Running the Gradle_basic_Demo_Project](CA2/part1/README.md#running-the-gradle-basic-demo-project-)
     - [Running the Gradle Spring Boot Basic Project](CA2/part1/README.md#running-the-gradle-spring-boot-basic-project)
     - [Conclusion](CA2/part1/README.md#conclusion)
+    
   - [Part2](CA2/part2/README.md)
     - [Environment Setup](CA2/part2/README.md#environment-setup)
     - [Modification of the Vagrantfile for QEMU Compatibility](CA2/part2/README.md#modification-of-the-vagrantfile-for-qemu-compatibility)
@@ -58,6 +60,7 @@ Each directory within this repository corresponds to a specific class assignment
     - [Key Vagrant Commands Utilized](CA2/part2/README.md#key-vagrant-commands-utilized)
     - [Alternative Solution](CA2/part2/README.md#alternative-solution)
     - [Conclusion](CA2/part2/README.md#conclusion)
+    
   - [Part 3](CA2/part3/README.md)
     - [Environment Setup](CA2/part3/README.md#environment-setup)
     - [Version1 - DockerFile](CA2/part3/README.md#version1---dockerfile)
