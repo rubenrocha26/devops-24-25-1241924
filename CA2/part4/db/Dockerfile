@@ -1,17 +1,11 @@
-FROM ubuntu:latest
+FROM amazoncorretto:17-alpine
 
-RUN apt-get update && \
-    apt-get install -y openjdk-11-jdk-headless && \
-    apt-get install unzip -y && \
-    apt-get install wget -y
+WORKDIR /h2
 
-RUN mkdir -p /usr/src/app
+RUN apk add --no-cache wget && \
+    wget https://repo1.maven.org/maven2/com/h2database/h2/1.4.200/h2-1.4.200.jar && \
+    apk del wget
 
-WORKDIR /usr/src/app/
+EXPOSE 8082 9092
 
-RUN wget https://repo1.maven.org/maven2/com/h2database/h2/1.4.200/h2-1.4.200.jar
-
-EXPOSE 8082
-EXPOSE 9092
-
-CMD ["java", "-cp", "./h2-1.4.200.jar", "org.h2.tools.Server", "-web", "-webAllowOthers", "-tcp", "-tcpAllowOthers", "-ifNotExists"]
+CMD ["java", "-cp", "h2-1.4.200.jar", "org.h2.tools.Server", "-web", "-webAllowOthers", "-tcp", "-tcpAllowOthers", "-ifNotExists"]

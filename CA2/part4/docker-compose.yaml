@@ -1,15 +1,6 @@
-version: '3.7'
+version: '3.8'
 
 services:
-  web:
-    build: ./web
-    ports:
-      - "8080:8080"
-    networks:
-      my_custom_network:
-        ipv4_address: 192.168.56.10
-    depends_on:
-      - db
 
   db:
     build: ./db
@@ -19,9 +10,23 @@ services:
     volumes:
       - ./data:/usr/src/data-backup
     networks:
-      my_custom_network:
+      my_own_network:
         ipv4_address: 192.168.56.11
 
+  web:
+    build:
+      context: ../../
+      dockerfile: CA2/Part4/web/Dockerfile
+    ports:
+      - "8080:8080"
+    networks:
+      - my_own_network
+    depends_on:
+      - db
+
 networks:
-  my_custom_network:
-    external: true
+  my_own_network:
+    driver: bridge
+    ipam:
+      config:
+          - subnet: "192.168.56.0/24"
