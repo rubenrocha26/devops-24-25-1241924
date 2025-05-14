@@ -1,18 +1,19 @@
-# _Part4 - Containers With Docker + Docker Compose_
+# _Part 4 - Containerizing Applications with Docker, Docker Compose, and Kubernetes_
+_
 
-## Introduction to Part 3
+## Introduction to Part 4
 
-This report outlines the process of containerizing a web application using Docker.  
-The primary objective was to demonstrate how to build, deploy, and manage both a web application and its accompanying database inside Docker containers.
+This report outlines the process of containerizing a full-stack web application with its database using Docker.  
+The main objective was to showcase how to package, deploy, and manage both services in isolated containers, ensuring portability and consistency.
 
-Additionally, an alternative deployment method using **Heroku**—a cloud platform that simplifies application deployment—was explored.
+Additionally, an alternative deployment method using **Kubernetes**—a cloud platform that simplifies application deployment—was explored.
 
 The following aspects are covered in this report:
 
 - Creation of Dockerfiles for the web application and the database
 - Configuration of Docker Compose to orchestrate the multi-container environment
 - Tagging and pushing Docker images to a remote repository
-- Deployment using Heroku for comparison
+- Deployment using Kubernetes for comparison
 
 By completing these steps, I developed a deeper understanding of containerization concepts and modern deployment workflows.
 
@@ -31,7 +32,11 @@ By completing these steps, I developed a deeper understanding of containerizatio
   - [Verifying Images in Docker Desktop](#1-verifying-images-in-docker-desktop)
   - [Tagging the Images](#2-tagging-the-images)
   - [Pushing the Images](#3-pushing-the-images)
-
+- [Verifying Database File Placement in the Volume](#verifying-database-file-placement-in-the-volume)
+  - [Accessing the DB Container](#accessing-the-db-container)
+  - [Copying the H2 JAR File to the Volume](#copying-the-h2-jar-file-to-the-volume)
+- [Alternative Solution - Kubernetes](#alternative-solution---kubernetes)
+- [Conclusion](#conclusion)
 
 
 ## Dockerfile for the Database Service
@@ -59,7 +64,7 @@ CMD ["java", "-cp", "h2-1.4.200.jar", "org.h2.tools.Server", "-web", "-webAllowO
 ### Explanation of the Dockerfile
 
 - **Base Image**: The image uses `amazoncorretto` as the base to ensure a clean and up-to-date environment.
-- **Directory Setup**: A directory `/h2` is created to store the application files.
+- **Working Directory**: The `/h2` directory is used as the working directory for the application files.
 - **Download H2 Database**: The H2 database JAR file is downloaded directly from the Maven repository.
 - **Port Exposure**: Ports `8082` (for web access) and `9092` (for TCP access) are exposed to allow external connections.
 - **Start Command**: The container runs the H2 database server with parameters that:
@@ -108,13 +113,13 @@ CMD ["java", "-jar", "app.jar"]
 
 ### Explanation of the Dockerfile
 
-- **Base Image**: `eclipse-temurin:17-jdk` provides a lightweight Tomcat 10 server with OpenJDK 17, ensuring compatibility and efficiency.
+- **Base Image**: `eclipse-temurin:17-jdk` provides the environment necessary to compile and run Java applications.
 - **Directory Setup**: A directory `/web` is created to house the application source files.
 - **Copy Repository**: The application repository is copied from `MyMachine` into the working directory.
 - **Build Project**: The script navigates into the project directory, makes the Gradle wrapper executable, and runs the build using `./gradlew build` to generate the Jar file.
-- **Deploy Jar File**: The generated JAr file is copied to the Tomcat `webapps` directory, making it accessible upon server startup.
+- **Final Stage**: Copies the generated JAR file to the container and sets it up to be executed.
+- **Embedded Server**: The application uses the embedded Tomcat server provided by Spring Boot, so no external Tomcat setup is required.
 - **Port Exposure**: Port `8080` is exposed to allow external HTTP traffic to reach the application.
-- **Start Command**: Tomcat is started, serving the deployed application automatically.
 
 ---
 
@@ -264,4 +269,56 @@ Below is a screenshot showing the successful push of the images to Docker Hub:
 
 ---
 
-## Working with Volumes
+## Verifying Database File Placement in the Volume
+
+To ensure that the database file was correctly placed in the mounted volume, I used the `docker-compose exec` command to access the running database container and manually inspect the file system.
+
+### Accessing the DB Container
+
+I executed the following command to open a shell inside the running `db` container:
+
+```bash
+docker-compose exec db sh
+```
+
+### Copying the H2 JAR File to the Volume
+
+Inside the container shell, I manually copied the `h2-1.4.200.jar` file to the mounted volume directory to ensure it was properly accessible for future use and persisted across container restarts.
+
+```bash
+cp g2-1.4.200.jar /usr/src/data-backup
+exit
+```
+
+This command sequence enters the `db` container, copies the specified file to the volume directory, and then exits the container shell.
+
+By doing so, it ensures that the H2 database JAR file is correctly placed within the persistent volume, effectively backing it up to the host system.
+
+This setup guarantees that even if the container is removed or recreated, the necessary database file remains intact and accessible for subsequent runs.
+
+---
+
+## Alternative Solution - Kubernetes
+
+**Kubernetes** is an open-source container orchestration platform originally developed by Google. 
+It automates the deployment, scaling, load balancing, and management of containerized applications.
+
+Unlike Docker Compose, which is mainly used for defining and running multi-container Docker applications on a single host, Kubernetes is designed to manage containers across multiple hosts in a cluster. 
+It provides advanced features such as:
+
+- **Self-healing**: Automatically restarts failed containers.
+- **Scaling**: Dynamically scales applications based on demand.
+- **Load Balancing**: Distributes traffic efficiently across services.
+- **Rolling Updates**: Deploys application updates without downtime.
+- **Secret and Config Management**: Manages environment configurations securely.
+
+While Docker Compose is great for local development and simple environments, Kubernetes is better suited for production environments that require scalability, high availability, and complex orchestration.
+
+---
+
+## Conclusion
+
+This project provided practical experience in containerizing a web application and database using Docker and orchestrating them with Docker Compose.  
+By building Dockerfiles, configuring persistent volumes, and deploying through Compose, I deepened my understanding of modern DevOps practices.  
+Additionally, by exploring Kubernetes as an alternative deployment solution, I gained insight into scalable and resilient application orchestration suitable for production environments.
+

@@ -67,6 +67,15 @@ Each directory within this repository corresponds to a specific class assignment
     - [Version2 - DockerFile](CA2/part3/README.md#version2---dockerfile)
     - [Conclusion](CA2/part3/README.md#conclusion)
 
+  - [Part4](CA2/part4/README.md)
+    - [Dockerfile for the Database Service](CA2/part4/README.md#dockerfile-for-the-database-service)
+    - [Web Application Dockerfile](CA2/part4/README.md#web-application-dockerfile)
+    - [Docker Compose](CA2/part4/README.md#docker-compose)
+    - [Tagging and Pushing Images to Docker Hub](CA2/part4/README.md#tagging-and-pushing-images-to-docker-hub)
+    - [Verifying Database File Placement in the Volume](CA2/part4/README.md#verifying-database-file-placement-in-the-volume)
+    - [Alternative Solution - Kubernetes](CA2/part4/README.md#alternative-solution---kubernetes)
+    - [Conclusion](CA2/part4/README.md#conclusion)
+
 ## Technologies Used
 
 This project utilizes various technologies to support **DevOps workflows** and **modern software development**:
@@ -80,6 +89,9 @@ This project utilizes various technologies to support **DevOps workflows** and *
 * [![UTM][UTM-shield]][UTM-url]
 * [![Vagrant][Vagrant-shield]][Vagrant-url]
 * [![QEMU][QEMU-shield]][QEMU-url]
+* [![Docker][Docker-shield]][Docker-url]
+* [![Kubernetes][Kubernetes-shield]][Kubernetes-url]
+
 
 Each assignment integrates these technologies to **enhance automation, scalability, and software quality**.
 
@@ -151,4 +163,10 @@ For any questions or collaborations, feel free to reach out:
 [Vagrant-url]: https://www.vagrantup.com/
 [QEMU-shield]: https://img.shields.io/badge/QEMU-3498DB?style=flat&logo=qemu&logoColor=white
 [QEMU-url]: https://www.qemu.org/
+[Docker-shield]: https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white
+[Docker-url]: https://www.docker.com/
+[Kubernetes-shield]: https://img.shields.io/badge/Kubernetes-326CE5?style=flat&logo=kubernetes&logoColor=white
+[Kubernetes-url]: https://kubernetes.io/
+
+
 
