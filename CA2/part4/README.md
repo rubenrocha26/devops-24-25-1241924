@@ -27,6 +27,10 @@ By completing these steps, I developed a deeper understanding of containerizatio
   - [Docker Compose file Content](#docker-compose-file-content)
   - [Explanation](#explanation)
   - [Building and Running the Services](#building-and-running-the-services)
+- [Tagging and Pushing Images to Docker Hub](#tagging-and-pushing-images-to-docker-hub)
+  - [Verifying Images in Docker Desktop](#1-verifying-images-in-docker-desktop)
+  - [Tagging the Images](#2-tagging-the-images)
+  - [Pushing the Images](#3-pushing-the-images)
 
 
 
@@ -189,8 +193,75 @@ To build and run the services defined in the `docker-compose.yml` file, I execut
 docker-compose up --build
 ```
 
+When the service was running, I could access the web application at http://localhost:8080/basic-0.0.1-SNAPSHOT/ and the H2 database console at http://localhost:8082.
+Below are screenshots showing successful access to the web application and the H2 database console:
 
+![web](images/web.png)
 
+![db](images/db.png)
 
+---
 
+## Tagging and Pushing Images to Docker Hub
 
+To ensure the Docker images were correctly tagged and uploaded to Docker Hub, I used Docker Desktop, which provides a user-friendly interface for managing local images.
+
+### 1. Verifying Images in Docker Desktop
+
+After building the images, I opened Docker Desktop to verify that the web and database images were listed.  
+Docker Desktop displays image names, tags, sizes, and creation times, making it easy to confirm their presence as shown below:
+
+![dockerDesktopImages](images/dockerDesktopImages.png)
+
+Also, it can be seen from terminal line:
+
+![dockerImages](images/dockerImages.png)
+
+### 2. Tagging the Images
+
+Although Docker Desktop shows the images, tagging is still required for pushing them to Docker Hub.  
+This can be done using the CLI or directly through Docker Desktop:
+
+**Using CLI:**
+```bash
+docker tag <image-id> username/image-name:tag
+```
+
+So, I tagged the images with the correct repository name and tag: 
+
+```bash
+docker tag 12af449e02bf rubenrocha26/part4-web:web
+docker tag ea09412f6d9f rubenrocha26/part4-db:db
+```
+
+These commands assigned the `web` tag to the `part4-web` image and the `db` tag to the `part4-db` image, which is shown in the output of the `docker images` command.
+
+![imagesTagged](images/imagesTagged.png)
+
+When you use the `docker tag` command, it does not create a new image but simply assigns a new tag to the same existing image. 
+This means the image ID remains the same, and no duplication occurs.
+
+### 3. Pushing the Images
+
+Before pushing the images, I logged into my Docker Hub account with the command:
+
+```bash
+docker login
+```
+
+Finally, I pushed the images to the Docker Hub repository using the following commands:
+
+```bash
+docker push rubenrocha26/part4-web:web
+docker push rubenrocha26/part4-db:db
+```
+
+These commands uploaded the `part4-web` image with the `web` tag and the `part4-db` image with the `db` tag to my repository on Docker Hub.
+
+Below is a screenshot showing the successful push of the images to Docker Hub:
+
+![dockerHubImages](images/dockerHubImages.png)
+
+---
+
+## Working with Volumes
