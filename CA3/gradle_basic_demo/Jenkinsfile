@@ -1,0 +1,47 @@
+pipeline {
+    agent any
+
+    tools{
+        jdk 'JDK17'
+    }
+
+    environment{
+        JAVA_HOME = tool 'JDK17'
+        PATH = "${JAVA_HOME}/bin:${env.PATH}"
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                echo 'Checking out from repository'
+                git branch: 'main', url: 'https://github.com/rubenrocha26/devops-24-25-1241924.git'
+            }
+        }
+        stage('Assemble') {
+            steps {
+                dir('CA1/Part2/gradle-basic') {
+                    echo 'Assembling...'
+                    sh 'chmod +x gradlew'
+                    sh './gradlew clean assemble'
+                }
+            }
+        }
+        stage('Test') {
+            steps {
+                dir('CA1/Part2/gradle-basic') {
+                    echo 'Running Tests...'
+                    sh './gradlew test'
+                    junit 'build/test-results/test/*.xml'
+                }
+            }
+        }
+        stage('Archive') {
+            steps {
+                dir('CA1/Part2/gradle-basic') {
+                    echo 'Archiving artifacts...'
+                    archiveArtifacts artifacts: 'build/libs/*.jar', allowEmptyArchive: true
+                }
+            }
+        }
+    }
+}
