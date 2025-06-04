@@ -44,3 +44,12 @@ task cleanWebpack(type: Delete) {
 }
 
 clean.dependsOn cleanWebpack
+
+tasks.test {
+	useJUnitPlatform()
+	reports {
+		junitXml.required = true
+		html.required = true
+	}
+}
+
