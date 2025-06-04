@@ -81,6 +81,12 @@ Each directory within this repository corresponds to a specific class assignment
     - [Pipeline Stages Overview](CA3/README.md#pipeline-stages-overview)
     - [Creating the Pipeline Job in Jenkins](CA3/README.md#creating-the-pipeline-job-in-jenkins)
     - [Executing the Pipeline](CA3/README.md#executing-the-pipeline)
+  - [Jenkins Pipeline for React and Spring Data REST](CA3/README.md#jenkins-pipeline-for-react-and-spring-data-rest-application)
+    - [Pipeline Stages Overview](CA3/README.md#pipeline-stages-overview-1)
+    - [Configuring Docker Credentials in Jenkins](CA3/README.md#configuring-docker-credentials-in-jenkins)
+    - [Creating the Pipeline Job in Jenkins](CA3/README.md#creating-the-pipeline-job-in-jenkins-1)
+    - [Executing the Pipeline](CA3/README.md#executing-the-pipeline-1)
+  - [Conclusion](CA3/README.md#conclusion)
 
 ## Technologies Used
 
@@ -97,6 +103,7 @@ This project utilizes various technologies to support **DevOps workflows** and *
 * [![QEMU][QEMU-shield]][QEMU-url]
 * [![Docker][Docker-shield]][Docker-url]
 * [![Kubernetes][Kubernetes-shield]][Kubernetes-url]
+* [![Jenkins][Jenkins-shield]][Jenkins-url]
 
 
 Each assignment integrates these technologies to **enhance automation, scalability, and software quality**.
@@ -173,6 +180,9 @@ For any questions or collaborations, feel free to reach out:
 [Docker-url]: https://www.docker.com/
 [Kubernetes-shield]: https://img.shields.io/badge/Kubernetes-326CE5?style=flat&logo=kubernetes&logoColor=white
 [Kubernetes-url]: https://kubernetes.io/
+[Jenkins-shield]: https://img.shields.io/badge/Jenkins-D24939?style=flat&logo=jenkins&logoColor=white
+[Jenkins-url]: https://www.jenkins.io/
+
 
 
 
