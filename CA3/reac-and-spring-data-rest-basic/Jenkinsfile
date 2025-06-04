@@ -1,0 +1,83 @@
+pipeline {
+    agent any
+
+    tools {
+        jdk 'JDK17'
+    }
+
+    environment {
+        JAVA_HOME = tool 'JDK17'
+        PATH = "${JAVA_HOME}/bin:${env.PATH}"
+        DOCKER_IMAGE_NAME = 'rubenrocha26/ca3-spring-demo'
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                echo 'Checking out code...'
+                git credentialsId: 'github-token', branch: 'main', url: 'https://github.com/rubenrocha26/devops-24-25-1241912.git'
+            }
+        }
+
+        stage('Assemble') {
+            steps {
+                dir('CA1/Part3/react-and-spring-data-rest-basic') {
+                    echo 'Assembling without tests...'
+                    sh './gradlew clean assemble -x test'
+                }
+            }
+        }
+
+        stage('Test') {
+            steps {
+                dir('CA1/Part3/react-and-spring-data-rest-basic') {
+                    echo 'Running unit tests...'
+                    sh './gradlew test'
+                    junit 'build/test-results/test/*.xml'
+                }
+            }
+        }
+
+        stage('Javadoc') {
+            steps {
+                dir('CA1/Part3/react-and-spring-data-rest-basic') {
+                    echo 'Generating Javadoc...'
+                    sh './gradlew javadoc'
+                    publishHTML([
+                        allowMissing: false,
+                        alwaysLinkToLastBuild: true,
+                        keepAll: true,
+                        reportDir: 'build/docs/javadoc',
+                        reportFiles: 'index.html',
+                        reportName: 'Javadoc'
+                    ])
+                }
+            }
+        }
+
+        stage('Archive') {
+            steps {
+                dir('CA1/Part3/react-and-spring-data-rest-basic') {
+                    echo 'Archiving jar/war...'
+                    archiveArtifacts artifacts: 'build/libs/*.jar', allowEmptyArchive: false
+                }
+            }
+        }
+
+        stage('Publish Image') {
+            steps {
+                script {
+                    def imageTag = "${env.DOCKER_IMAGE_NAME}:${env.BUILD_NUMBER}"
+                    echo "Building Docker image ${imageTag}..."
+
+                    docker.withRegistry('', 'dockerhub-credentials-id') {
+                        def customImage = docker.build(imageTag, '-f CA2/Part4/web/Dockerfile .')
+                        customImage.push()
+                    }
+
+                    echo "Docker image pushed: ${imageTag}"
+                }
+            }
+        }
+    }
+}

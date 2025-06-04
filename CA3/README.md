@@ -131,7 +131,7 @@ The progress and output of each stage were monitored through the **Jenkins Conso
 
 Below is a screenshot illustrating the Jenkins pipeline job after a successful build:
 
-[!buildSuccessPart1](images/buildSuccessPart1.png)
+![buildSuccessPart1](images/buildSuccessPart1.png)
 
 ---
 

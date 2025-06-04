@@ -1,5 +1,4 @@
 # _Part 4 - Containerizing Applications with Docker, Docker Compose, and Kubernetes_
-_
 
 ## Introduction to Part 4
 

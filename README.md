@@ -75,6 +75,12 @@ Each directory within this repository corresponds to a specific class assignment
     - [Verifying Database File Placement in the Volume](CA2/part4/README.md#verifying-database-file-placement-in-the-volume)
     - [Alternative Solution - Kubernetes](CA2/part4/README.md#alternative-solution---kubernetes)
     - [Conclusion](CA2/part4/README.md#conclusion)
+- [CA3](CA3)
+  - [Setting Up](CA3/README.md#setting-up)
+  - [Jenkins Pipeline for Gradle Basic Demo](CA3/README.md#jenkins-pipeline-for-gradle-basic-demo)
+    - [Pipeline Stages Overview](CA3/README.md#pipeline-stages-overview)
+    - [Creating the Pipeline Job in Jenkins](CA3/README.md#creating-the-pipeline-job-in-jenkins)
+    - [Executing the Pipeline](CA3/README.md#executing-the-pipeline)
 
 ## Technologies Used
 
