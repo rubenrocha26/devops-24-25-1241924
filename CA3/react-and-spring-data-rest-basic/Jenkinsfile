@@ -50,7 +50,7 @@ pipeline {
                 dir('CA1/part3/react-and-spring-data-rest-basic') {
                     echo 'Testing...'
                     sh './gradlew test'
-                    junit '**/build/test-results/**/*.xml'
+                    junit '**/build/test-results/test/*.xml'
                 }
             }
         }
