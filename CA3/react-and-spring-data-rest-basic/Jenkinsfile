@@ -33,7 +33,7 @@ pipeline {
                 dir('CA1/Part3/react-and-spring-data-rest-basic') {
                     echo 'Running unit tests...'
                     sh './gradlew test'
-                    junit allowEmptyResults: true, testResults: '**/build/test-results/test/*.xml'
+                    junit testResults: '**/build/test-results/test/*.xml'
                 }
             }
         }
